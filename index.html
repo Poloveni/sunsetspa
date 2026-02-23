@@ -119,13 +119,25 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.7rem;
             text-decoration: none;
             transition: opacity 0.3s;
         }
         .nav-logo img {
             height: 42px;
             width: auto;
+        }
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+        .nav-logo-text span {
+            color: var(--orange);
+            font-weight: 600;
         }
         .nav-logo:hover { opacity: 0.8; }
 
@@ -1427,13 +1439,16 @@
 
     <!-- PRELOADER -->
     <div class="preloader" id="preloader">
-        <img src="images/logo.png" alt="The Sunset" style="height:80px; opacity:0; animation: preloaderFade 1.5s ease forwards;">
+        <div style="display:flex; align-items:center; gap:1rem; opacity:0; animation: preloaderFade 1.5s ease forwards;">
+            <img src="images/logo.png" alt="The Sunset" style="height:70px;">
+            <div class="preloader-logo">The <span>Sunset</span></div>
+        </div>
         <div class="preloader-bar"></div>
     </div>
 
     <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
-        <a href="#" class="nav-logo"><img src="images/logo.png" alt="The Sunset Spa Nîmes"></a>
+        <a href="#" class="nav-logo"><img src="images/logo.png" alt="The Sunset Spa Nîmes"><div class="nav-logo-text">The <span>Sunset</span></div></a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#about" onclick="closeNav()">Notre histoire</a></li>
             <li><a href="#services" onclick="closeNav()">Prestations</a></li>
@@ -1848,7 +1863,10 @@
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-inner">
-            <div class="footer-brand"><img src="images/logo.png" alt="The Sunset" style="height:50px;"></div>
+            <div class="footer-brand" style="display:flex; align-items:center; gap:0.7rem;">
+                <img src="images/logo.png" alt="The Sunset" style="height:45px;">
+                <span style="font-family:var(--font-display); font-size:1.3rem; font-weight:300; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase;">The <span style="color:var(--orange); font-weight:600;">Sunset</span></span>
+            </div>
             <ul class="footer-nav">
                 <li><a href="#about">Notre histoire</a></li>
                 <li><a href="#services">Prestations</a></li>
