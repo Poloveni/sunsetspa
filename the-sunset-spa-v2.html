@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sunset — Spa & Bronzage à Nîmes depuis 2011</title>
+    <meta name="description" content="The Sunset, votre oasis de détente à Nîmes. Spa privatif avec Jacuzzi & Hammam, solariums dernière génération, soins LED. Depuis 2011 au cœur de Nîmes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep: #0c0604;
+            --dark: #1a0e06;
+            --brown: #3d1e0a;
+            --amber: #b5621a;
+            --orange: #e87a2e;
+            --gold: #f0b24a;
+            --yellow: #fcd97a;
+            --cream: #fff8f0;
+            --peach: #ffdfc4;
+            --coral: #ff6f55;
+            --rose: #ff5678;
+            --teal: #1b8a7a;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-smooth: cubic-bezier(0.45, 0, 0.15, 1);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body {
+            font-family: var(--font-body);
+            background: var(--deep);
+            color: var(--cream);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== CUSTOM CURSOR GLOW ===== */
+        .cursor-glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            background: radial-gradient(circle, rgba(240, 178, 74, 0.06) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+            mix-blend-mode: screen;
+        }
+
+        /* ===== PRELOADER ===== */
+        .preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: var(--deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1.5rem;
+            transition: opacity 0.8s var(--ease-out-expo), visibility 0.8s;
+        }
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .preloader-logo {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            text-transform: uppercase;
+            opacity: 0;
+            animation: preloaderFade 1.5s ease forwards;
+        }
+        .preloader-logo span { color: var(--orange); font-weight: 600; }
+        .preloader-bar {
+            width: 120px;
+            height: 2px;
+            background: rgba(240, 178, 74, 0.15);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .preloader-bar::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--orange), var(--gold));
+            animation: preloaderBar 1.8s var(--ease-smooth) forwards;
+        }
+        @keyframes preloaderFade { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes preloaderBar { from { transform:translateX(-100%); } to { transform:translateX(0); } }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.6s var(--ease-out-expo);
+        }
+        .navbar.scrolled {
+            padding: 0.8rem 4rem;
+            background: rgba(12, 6, 4, 0.85);
+            backdrop-filter: blur(30px) saturate(1.5);
+            -webkit-backdrop-filter: blur(30px) saturate(1.5);
+            border-bottom: 1px solid rgba(240, 178, 74, 0.06);
+        }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 300;
+            letter-spacing: 0.18em;
+            color: var(--gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+        }
+        .nav-logo span { color: var(--orange); font-weight: 600; }
+        .nav-logo:hover { opacity: 0.8; }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.8rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--peach);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px; left: 50%;
+            width: 0; height: 2px;
+            background: var(--gold);
+            transition: all 0.4s var(--ease-out-expo);
+            transform: translateX(-50%);
+            border-radius: 1px;
+        }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--orange), var(--coral)) !important;
+            color: white !important;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            letter-spacing: 0.08em !important;
+            transition: all 0.4s var(--ease-out-expo) !important;
+            box-shadow: 0 4px 20px rgba(232, 122, 46, 0.25);
+        }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(232, 122, 46, 0.4) !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 32px;
+            height: 22px;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            width: 100%; height: 2px;
+            background: var(--cream);
+            border-radius: 2px;
+            transition: all 0.4s var(--ease-out-expo);
+            transform-origin: center;
+        }
+        .menu-toggle.active span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .menu-toggle.active span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-canvas {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-gradient {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background:
+                radial-gradient(ellipse 80% 60% at 50% 100%, rgba(232, 122, 46, 0.25) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 20% 80%, rgba(255, 86, 120, 0.1) 0%, transparent 55%),
+                radial-gradient(ellipse 60% 50% at 80% 70%, rgba(240, 178, 74, 0.12) 0%, transparent 55%),
+                linear-gradient(180deg,
+                    #0c0604 0%,
+                    #120804 20%,
+                    #1f0e06 35%,
+                    #3d1e0a 48%,
+                    #8b4515 58%,
+                    #cc6520 66%,
+                    #e87a2e 72%,
+                    #f0a040 78%,
+                    #f0b24a 83%,
+                    #fcd97a 88%,
+                    #ff9a5c 93%,
+                    #ff6f55 97%,
+                    #ff5678 100%
+                );
+        }
+
+        /* Animated sun */
+        .hero-sun {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            height: 280px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .hero-sun-core {
+            position: absolute;
+            inset: 30px;
+            border-radius: 50%;
+            background: radial-gradient(circle,
+                rgba(252, 217, 122, 0.9) 0%,
+                rgba(240, 178, 74, 0.7) 30%,
+                rgba(232, 122, 46, 0.4) 60%,
+                transparent 72%
+            );
+            animation: sunBreath 5s ease-in-out infinite alternate;
+        }
+        .hero-sun-rays {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle,
+                rgba(252, 217, 122, 0.3) 0%,
+                rgba(240, 178, 74, 0.1) 40%,
+                transparent 65%
+            );
+            animation: sunRays 7s ease-in-out infinite alternate;
+        }
+        .hero-sun-flare {
+            position: absolute;
+            inset: -40px;
+            border-radius: 50%;
+            background: radial-gradient(circle,
+                rgba(252, 217, 122, 0.08) 0%,
+                transparent 55%
+            );
+            animation: sunFlare 8s ease-in-out infinite alternate-reverse;
+        }
+        @keyframes sunBreath { 0% { transform: scale(1); opacity: 0.9; } 100% { transform: scale(1.08); opacity: 1; } }
+        @keyframes sunRays { 0% { transform: scale(1) rotate(0deg); opacity: 0.7; } 100% { transform: scale(1.15) rotate(3deg); opacity: 1; } }
+        @keyframes sunFlare { 0% { transform: scale(1); } 100% { transform: scale(1.2); } }
+
+        /* Water reflection */
+        .hero-water {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 15%;
+            z-index: 3;
+            background: linear-gradient(180deg,
+                transparent 0%,
+                rgba(12, 6, 4, 0.3) 20%,
+                rgba(12, 6, 4, 0.7) 60%,
+                var(--deep) 100%
+            );
+        }
+        .hero-water::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 20%; right: 20%;
+            height: 60%;
+            background: linear-gradient(180deg,
+                rgba(240, 178, 74, 0.15) 0%,
+                rgba(240, 178, 74, 0.05) 50%,
+                transparent 100%
+            );
+            filter: blur(8px);
+            animation: waterShimmer 4s ease-in-out infinite alternate;
+        }
+        @keyframes waterShimmer { 0% { opacity: 0.5; transform: scaleX(0.9); } 100% { opacity: 1; transform: scaleX(1.1); } }
+
+        /* Palm silhouettes */
+        .palm {
+            position: absolute;
+            bottom: 8%;
+            z-index: 4;
+            opacity: 0.85;
+            pointer-events: none;
+        }
+        .palm-left { left: -2%; }
+        .palm-right { right: -2%; transform: scaleX(-1); }
+        .palm svg { width: 320px; height: auto; }
+
+        /* Hero content */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.55rem 1.6rem;
+            border: 1px solid rgba(252, 217, 122, 0.2);
+            border-radius: 50px;
+            font-size: 0.72rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--yellow);
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(12px);
+            background: rgba(240, 178, 74, 0.06);
+            opacity: 0;
+            animation: heroIn 1s var(--ease-out-expo) 2.2s forwards;
+        }
+        .hero-badge-dot {
+            width: 6px; height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.7); } }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3.2rem, 8vw, 6.5rem);
+            font-weight: 300;
+            line-height: 1.05;
+            color: var(--cream);
+            opacity: 0;
+            animation: heroIn 1.2s var(--ease-out-expo) 2.4s forwards;
+        }
+        .hero h1 em {
+            font-style: italic;
+            font-weight: 400;
+            background: linear-gradient(135deg, var(--gold), var(--yellow), var(--orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-family: var(--font-body);
+            font-size: clamp(0.95rem, 2vw, 1.15rem);
+            font-weight: 300;
+            color: var(--peach);
+            margin-top: 1.5rem;
+            margin-bottom: 3rem;
+            letter-spacing: 0.04em;
+            opacity: 0;
+            animation: heroIn 1s var(--ease-out-expo) 2.6s forwards;
+        }
+        .hero-sub span {
+            display: inline-block;
+            width: 4px; height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+            vertical-align: middle;
+            margin: 0 0.8rem;
+            opacity: 0.5;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: heroIn 1s var(--ease-out-expo) 2.8s forwards;
+        }
+        @keyframes heroIn { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 1.05rem 2.6rem;
+            border-radius: 60px;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: all 0.5s var(--ease-out-expo);
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--orange), var(--coral));
+            color: white;
+            box-shadow: 0 8px 35px rgba(232, 122, 46, 0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+        }
+        .btn-primary::before { background: linear-gradient(135deg, var(--coral), var(--rose)); }
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 14px 45px rgba(232, 122, 46, 0.45);
+        }
+        .btn-primary:hover::before { opacity: 1; }
+        .btn-primary span { position: relative; z-index: 1; }
+
+        .btn-glass {
+            background: rgba(255, 248, 240, 0.06);
+            color: var(--cream);
+            border: 1px solid rgba(255, 248, 240, 0.15);
+            backdrop-filter: blur(15px);
+        }
+        .btn-glass:hover {
+            background: rgba(255, 248, 240, 0.12);
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(240, 178, 74, 0.12);
+        }
+
+        /* Scroll indicator */
+        .hero-scroll {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            opacity: 0;
+            animation: heroIn 1s var(--ease-out-expo) 3.2s forwards;
+        }
+        .hero-scroll-text {
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--peach);
+            opacity: 0.4;
+        }
+        .hero-scroll-line {
+            width: 1px; height: 50px;
+            position: relative;
+            overflow: hidden;
+            background: rgba(240, 178, 74, 0.1);
+        }
+        .hero-scroll-line::after {
+            content: '';
+            position: absolute;
+            top: -50px; left: 0;
+            width: 1px; height: 50px;
+            background: linear-gradient(to bottom, transparent, var(--gold));
+            animation: scrollLine 2s ease-in-out infinite;
+        }
+        @keyframes scrollLine { 0% { top: -50px; } 100% { top: 50px; } }
+
+        /* ===== SECTION COMMONS ===== */
+        .section-pad { padding: 8rem 4rem; }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            opacity: 0.7;
+        }
+        .section-label::before {
+            content: '';
+            width: 30px; height: 1px;
+            background: var(--gold);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-weight: 300;
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+        }
+        .section-title em {
+            font-style: italic;
+            font-weight: 400;
+            background: linear-gradient(135deg, var(--gold), var(--yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-desc {
+            font-weight: 300;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--peach);
+            opacity: 0.65;
+            max-width: 550px;
+        }
+        .section-desc.centered { margin: 0 auto; text-align: center; }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: var(--deep);
+            position: relative;
+            overflow: hidden;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -200px; right: -200px;
+            width: 600px; height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(232, 122, 46, 0.04) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .about-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+            aspect-ratio: 4/5;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+        .about-visual-frame {
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            border: 1px solid rgba(240, 178, 74, 0.1);
+            background: linear-gradient(160deg,
+                rgba(61, 30, 10, 0.5) 0%,
+                rgba(26, 14, 6, 0.8) 100%
+            );
+            overflow: hidden;
+        }
+        .about-visual-frame::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(240, 178, 74, 0.05), transparent, rgba(232, 122, 46, 0.04), transparent);
+            animation: rotateGlow 15s linear infinite;
+        }
+        @keyframes rotateGlow { 100% { transform: rotate(360deg); } }
+
+        .about-visual-content {
+            position: absolute;
+            inset: 1px;
+            border-radius: 23px;
+            background: linear-gradient(160deg, rgba(30, 15, 5, 0.95), rgba(12, 6, 4, 0.98));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            z-index: 1;
+        }
+        .about-year-num {
+            font-family: var(--font-display);
+            font-size: 8rem;
+            font-weight: 300;
+            line-height: 1;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--amber) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .about-year-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--peach);
+            opacity: 0.4;
+        }
+        .about-visual-accent {
+            position: absolute;
+            bottom: -2px; left: 30px; right: 30px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--orange), var(--gold), var(--orange), transparent);
+            border-radius: 2px;
+            z-index: 2;
+        }
+
+        .about-text { max-width: 520px; }
+        .about-text h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+        .about-text h3 em {
+            font-style: italic;
+            font-weight: 400;
+            background: linear-gradient(135deg, var(--gold), var(--yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .about-text p {
+            font-weight: 300;
+            line-height: 1.85;
+            color: var(--peach);
+            opacity: 0.7;
+            margin-bottom: 1rem;
+            font-size: 0.98rem;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(240, 178, 74, 0.08);
+        }
+        .stat-num {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            font-weight: 400;
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+        .stat-text {
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--peach);
+            opacity: 0.4;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            background: linear-gradient(180deg, var(--deep) 0%, #100906 50%, var(--deep) 100%);
+            position: relative;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 4.5rem;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            position: relative;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            background: rgba(30, 15, 5, 0.5);
+            border: 1px solid rgba(240, 178, 74, 0.06);
+            transition: all 0.6s var(--ease-out-expo);
+            overflow: hidden;
+            cursor: pointer;
+            group: true;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            background: linear-gradient(160deg, rgba(232, 122, 46, 0.08), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--orange), var(--gold), var(--coral));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s var(--ease-out-expo);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(240, 178, 74, 0.15);
+            box-shadow: 0 25px 60px rgba(232, 122, 46, 0.08);
+        }
+        .service-card:hover::before { opacity: 1; }
+        .service-card:hover::after { transform: scaleX(1); }
+
+        .service-icon-wrap {
+            width: 56px; height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(232, 122, 46, 0.12), rgba(240, 178, 74, 0.06));
+            border: 1px solid rgba(240, 178, 74, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.5s var(--ease-out-expo);
+        }
+        .service-card:hover .service-icon-wrap {
+            background: linear-gradient(135deg, rgba(232, 122, 46, 0.2), rgba(240, 178, 74, 0.12));
+            transform: scale(1.05);
+        }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--cream);
+            margin-bottom: 0.6rem;
+        }
+        .service-card p {
+            font-weight: 300;
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: var(--peach);
+            opacity: 0.55;
+            margin-bottom: 1.5rem;
+        }
+        .service-tag {
+            display: inline-block;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            background: rgba(240, 178, 74, 0.08);
+            color: var(--gold);
+            border: 1px solid rgba(240, 178, 74, 0.1);
+        }
+
+        /* ===== EXPERIENCE STRIP ===== */
+        .experience {
+            padding: 5rem 0;
+            background: var(--deep);
+            overflow: hidden;
+            position: relative;
+        }
+        .experience::before, .experience::after {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0;
+            width: 150px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .experience::before { left: 0; background: linear-gradient(90deg, var(--deep), transparent); }
+        .experience::after { right: 0; background: linear-gradient(-90deg, var(--deep), transparent); }
+
+        .marquee-track {
+            display: flex;
+            animation: marqueeScroll 40s linear infinite;
+            width: max-content;
+        }
+        .marquee-item {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            padding: 0 2.5rem;
+        }
+        .marquee-text {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 300;
+            font-style: italic;
+            white-space: nowrap;
+            color: var(--cream);
+            opacity: 0.15;
+            transition: opacity 0.3s;
+        }
+        .marquee-dot {
+            width: 6px; height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0.2;
+            flex-shrink: 0;
+        }
+        @keyframes marqueeScroll { 100% { transform: translateX(-50%); } }
+
+        /* ===== FEATURES ===== */
+        .features {
+            background: linear-gradient(180deg, var(--deep) 0%, #100906 100%);
+            overflow: hidden;
+        }
+        .features-grid {
+            max-width: 1100px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        .feat-card {
+            padding: 2.2rem 1.5rem;
+            text-align: center;
+            border-radius: 20px;
+            background: rgba(30, 15, 5, 0.4);
+            border: 1px solid rgba(240, 178, 74, 0.05);
+            transition: all 0.5s var(--ease-out-expo);
+            position: relative;
+            overflow: hidden;
+        }
+        .feat-card::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 120px; height: 120px;
+            background: radial-gradient(circle, rgba(240, 178, 74, 0.06) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .feat-card:hover {
+            border-color: rgba(240, 178, 74, 0.15);
+            transform: translateY(-5px);
+        }
+        .feat-card:hover::before { opacity: 1; }
+        .feat-icon { font-size: 2rem; margin-bottom: 1rem; position: relative; z-index: 1; }
+        .feat-name {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--cream);
+            margin-bottom: 0.3rem;
+            position: relative; z-index: 1;
+        }
+        .feat-sub {
+            font-size: 0.75rem;
+            color: var(--peach);
+            opacity: 0.4;
+            position: relative; z-index: 1;
+        }
+
+        /* ===== TARIFS ===== */
+        .tarifs {
+            background: linear-gradient(180deg, #100906 0%, var(--deep) 100%);
+        }
+
+        .tarifs-header { text-align: center; margin-bottom: 4rem; }
+
+        .tarifs-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .tarif-card {
+            padding: 3rem;
+            border-radius: 24px;
+            background: rgba(30, 15, 5, 0.4);
+            border: 1px solid rgba(240, 178, 74, 0.06);
+            transition: all 0.5s var(--ease-out-expo);
+            position: relative;
+            overflow: hidden;
+        }
+        .tarif-card.highlight {
+            border-color: rgba(232, 122, 46, 0.2);
+            background: linear-gradient(160deg, rgba(61, 30, 10, 0.3), rgba(30, 15, 5, 0.5));
+        }
+        .tarif-card.highlight::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--orange), var(--gold), var(--coral));
+        }
+        .tarif-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(232, 122, 46, 0.06);
+        }
+        .tarif-badge {
+            display: inline-block;
+            padding: 0.3rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--orange), var(--coral));
+            color: white;
+            margin-bottom: 1.2rem;
+        }
+        .tarif-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--cream);
+            margin-bottom: 0.4rem;
+        }
+        .tarif-card .tarif-sub {
+            font-size: 0.85rem;
+            color: var(--peach);
+            opacity: 0.5;
+            margin-bottom: 2rem;
+        }
+        .tarif-list { list-style: none; }
+        .tarif-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid rgba(240, 178, 74, 0.04);
+            font-size: 0.92rem;
+            color: var(--peach);
+            opacity: 0.7;
+        }
+        .tarif-list li:last-child { border-bottom: none; }
+        .tarif-list .tarif-price {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 500;
+            background: linear-gradient(135deg, var(--gold), var(--yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .tarif-note {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 0.82rem;
+            color: var(--peach);
+            opacity: 0.35;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: var(--deep);
+            position: relative;
+        }
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 800px; height: 800px;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(232, 122, 46, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .testimonials-header { text-align: center; margin-bottom: 4rem; }
+
+        .test-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .test-card {
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            background: rgba(30, 15, 5, 0.35);
+            border: 1px solid rgba(240, 178, 74, 0.05);
+            transition: all 0.5s var(--ease-out-expo);
+            position: relative;
+        }
+        .test-card:hover {
+            border-color: rgba(240, 178, 74, 0.12);
+            transform: translateY(-4px);
+        }
+        .test-quote {
+            font-size: 3rem;
+            font-family: var(--font-display);
+            color: var(--gold);
+            opacity: 0.15;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .test-stars {
+            color: var(--gold);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 1.2rem;
+        }
+        .test-card p {
+            font-size: 0.92rem;
+            line-height: 1.8;
+            color: var(--peach);
+            opacity: 0.7;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        .test-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .test-avatar {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--orange), var(--gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+        }
+        .test-name {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--cream);
+        }
+        .test-source {
+            font-size: 0.7rem;
+            color: var(--peach);
+            opacity: 0.4;
+        }
+
+        /* ===== CTA ===== */
+        .cta {
+            position: relative;
+            padding: 7rem 4rem;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cta-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--orange), #d05525, var(--coral), var(--rose));
+        }
+        .cta-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 50%, rgba(255,255,255,0.05) 0%, transparent 50%);
+        }
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .cta h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 300;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .cta h2 em { font-weight: 400; font-style: italic; }
+        .cta p {
+            color: rgba(255,255,255,0.8);
+            font-weight: 300;
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+        .btn-white {
+            background: white;
+            color: var(--orange);
+            font-weight: 600;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        .btn-white:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 14px 45px rgba(0,0,0,0.25);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: linear-gradient(180deg, var(--deep) 0%, #080402 100%);
+        }
+        .contact-layout {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .contact-info-list { display: flex; flex-direction: column; gap: 2rem; }
+        .contact-row {
+            display: flex;
+            gap: 1.2rem;
+            align-items: flex-start;
+        }
+        .contact-ico {
+            width: 48px; height: 48px;
+            border-radius: 14px;
+            background: rgba(232, 122, 46, 0.08);
+            border: 1px solid rgba(240, 178, 74, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .contact-row h4 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--cream);
+            margin-bottom: 0.3rem;
+        }
+        .contact-row p, .contact-row a {
+            font-size: 0.88rem;
+            color: var(--peach);
+            opacity: 0.6;
+            text-decoration: none;
+            line-height: 1.6;
+            transition: all 0.3s;
+        }
+        .contact-row a:hover { color: var(--gold); opacity: 1; }
+
+        .contact-hours-box {
+            margin-top: 1.5rem;
+            padding: 1.8rem;
+            border-radius: 16px;
+            background: rgba(30, 15, 5, 0.5);
+            border: 1px solid rgba(240, 178, 74, 0.06);
+        }
+        .contact-hours-box h4 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: var(--cream);
+            margin-bottom: 0.8rem;
+        }
+        .contact-hours-box p {
+            font-size: 0.88rem;
+            color: var(--peach);
+            opacity: 0.6;
+            line-height: 1.9;
+        }
+
+        .contact-map-wrap {
+            border-radius: 20px;
+            overflow: hidden;
+            height: 100%;
+            min-height: 400px;
+            border: 1px solid rgba(240, 178, 74, 0.08);
+            position: relative;
+        }
+        .contact-map-wrap iframe {
+            width: 100%; height: 100%;
+            border: 0;
+            filter: saturate(0.5) brightness(0.7) contrast(1.15);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #080402;
+            padding: 4rem;
+            border-top: 1px solid rgba(240, 178, 74, 0.05);
+        }
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: var(--gold);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        .footer-brand span { color: var(--orange); font-weight: 600; }
+        .footer-nav {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .footer-nav a {
+            font-size: 0.78rem;
+            color: var(--peach);
+            opacity: 0.4;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: all 0.3s;
+        }
+        .footer-nav a:hover { opacity: 1; color: var(--gold); }
+
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(240, 178, 74, 0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-copy {
+            font-size: 0.72rem;
+            color: var(--peach);
+            opacity: 0.25;
+        }
+        .footer-copy a {
+            color: var(--gold);
+            text-decoration: none;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .footer-copy a:hover { opacity: 1; }
+        .footer-credit {
+            font-size: 0.72rem;
+            color: var(--peach);
+            opacity: 0.25;
+        }
+        .footer-credit a { color: var(--gold); text-decoration: none; opacity: 0.7; }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: all 0.9s var(--ease-out-expo);
+        }
+        .reveal.vis {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.35s; }
+        .reveal-delay-5 { transition-delay: 0.4s; }
+        .reveal-delay-6 { transition-delay: 0.45s; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .section-pad { padding: 6rem 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 1rem 1.5rem; }
+            .navbar.scrolled { padding: 0.7rem 1.5rem; }
+            .nav-links {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(12, 6, 4, 0.97);
+                backdrop-filter: blur(30px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.2rem;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a { font-size: 1.1rem; letter-spacing: 0.2em; }
+            .menu-toggle { display: flex; }
+
+            .section-pad { padding: 4.5rem 1.5rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .about-visual { aspect-ratio: 3/2; }
+            .services-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .tarifs-grid { grid-template-columns: 1fr; }
+            .test-grid { grid-template-columns: 1fr; }
+            .contact-layout { grid-template-columns: 1fr; }
+            .contact-map-wrap { min-height: 300px; }
+
+            .palm svg { width: 180px; }
+            .hero-sun { width: 180px; height: 180px; }
+            .about-year-num { font-size: 5rem; }
+            .about-stats { flex-wrap: wrap; gap: 1.5rem; }
+
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-nav { flex-wrap: wrap; justify-content: center; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .features-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; justify-content: center; }
+            .about-stats { justify-content: center; }
+            .cta { padding: 5rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CURSOR GLOW -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- PRELOADER -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo">The <span>Sunset</span></div>
+        <div class="preloader-bar"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="nav-logo">The <span>Sunset</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about" onclick="closeNav()">Notre histoire</a></li>
+            <li><a href="#services" onclick="closeNav()">Prestations</a></li>
+            <li><a href="#tarifs" onclick="closeNav()">Tarifs</a></li>
+            <li><a href="#avis" onclick="closeNav()">Avis</a></li>
+            <li><a href="#contact" onclick="closeNav()">Contact</a></li>
+            <li><a href="tel:0763322099" class="nav-cta" onclick="closeNav()">Réserver</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle" onclick="toggleNav()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <canvas class="hero-canvas" id="heroCanvas"></canvas>
+        <div class="hero-gradient"></div>
+
+        <div class="hero-sun">
+            <div class="hero-sun-flare"></div>
+            <div class="hero-sun-rays"></div>
+            <div class="hero-sun-core"></div>
+        </div>
+
+        <div class="hero-water"></div>
+
+        <!-- Palm silhouettes via inline SVG -->
+        <div class="palm palm-left">
+            <svg viewBox="0 0 300 500" fill="none">
+                <path d="M280 500 C280 500 240 380 200 300 C160 220 120 200 80 150 C40 100 10 60 0 0 L0 100 C30 140 60 180 90 220 C60 200 30 170 0 140 L0 240 C40 260 80 300 120 340 C80 320 40 290 0 260 L0 360 C50 370 100 400 150 440 C100 420 50 390 0 370 L0 500 Z" fill="rgba(12,6,4,0.95)"/>
+            </svg>
+        </div>
+        <div class="palm palm-right">
+            <svg viewBox="0 0 300 500" fill="none">
+                <path d="M280 500 C280 500 240 380 200 300 C160 220 120 200 80 150 C40 100 10 60 0 0 L0 100 C30 140 60 180 90 220 C60 200 30 170 0 140 L0 240 C40 260 80 300 120 340 C80 320 40 290 0 260 L0 360 C50 370 100 400 150 440 C100 420 50 390 0 370 L0 500 Z" fill="rgba(12,6,4,0.95)"/>
+            </svg>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-badge">
+                <div class="hero-badge-dot"></div>
+                Spa & Bronzage — Nîmes depuis 2011
+            </div>
+            <h1>Votre oasis<br>de <em>détente</em></h1>
+            <p class="hero-sub">
+                Spa privatif <span></span> Jacuzzi & Hammam <span></span> Solariums <span></span> Soins LED
+            </p>
+            <div class="hero-buttons">
+                <a href="tel:0763322099" class="btn btn-primary"><span>☎ Réserver maintenant</span></a>
+                <a href="#services" class="btn btn-glass">Découvrir nos soins</a>
+            </div>
+        </div>
+
+        <div class="hero-scroll">
+            <div class="hero-scroll-text">Découvrir</div>
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about section-pad" id="about">
+        <div class="about-grid">
+            <div class="about-visual reveal">
+                <div class="about-visual-frame"></div>
+                <div class="about-visual-content">
+                    <div class="about-year-num">2011</div>
+                    <div class="about-year-label">Année de création</div>
+                </div>
+                <div class="about-visual-accent"></div>
+            </div>
+            <div class="about-text">
+                <div class="section-label reveal">Notre histoire</div>
+                <h3 class="reveal reveal-delay-1">Un espace de <em>bien-être</em><br>unique à Nîmes</h3>
+                <p class="reveal reveal-delay-2">
+                    Niché au cœur du centre historique de Nîmes, The Sunset vous accueille depuis 2011 dans un espace de 110m² entièrement dédié à votre relaxation et votre bien-être.
+                </p>
+                <p class="reveal reveal-delay-3">
+                    Profitez d'une expérience exclusive avec notre spa privatif comprenant Jacuzzi et Hammam pour 1 à 4 personnes, nos cabines de bronzage dernière génération, et nos soins LED au collagène de nouvelle génération.
+                </p>
+                <div class="about-stats reveal reveal-delay-4">
+                    <div class="stat">
+                        <div class="stat-num">14+</div>
+                        <div class="stat-text">Ans d'expertise</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">110m²</div>
+                        <div class="stat-text">D'espace bien-être</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">4.8</div>
+                        <div class="stat-text">Note Google ★</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services section-pad" id="services">
+        <div class="services-header">
+            <div class="section-label reveal" style="justify-content:center;">Nos prestations</div>
+            <h2 class="section-title reveal reveal-delay-1">Des soins pensés pour<br>votre <em>bien-être</em></h2>
+            <p class="section-desc centered reveal reveal-delay-2">Une gamme complète dans une atmosphère chaleureuse et apaisante, au cœur de Nîmes.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card reveal reveal-delay-1">
+                <div class="service-icon-wrap">🧖</div>
+                <h3>Spa Privatif</h3>
+                <p>Jacuzzi et Hammam privatisés de 1 à 4 personnes. Un moment d'évasion totale dans un cadre intimiste.</p>
+                <div class="service-tag">À partir de 35€</div>
+            </div>
+            <div class="service-card reveal reveal-delay-2">
+                <div class="service-icon-wrap">☀️</div>
+                <h3>Solariums</h3>
+                <p>Cabines dernière génération avec intensités adaptées à tous les types de peau pour un bronzage naturel.</p>
+                <div class="service-tag">À partir de 8€</div>
+            </div>
+            <div class="service-card reveal reveal-delay-3">
+                <div class="service-icon-wrap">✨</div>
+                <h3>Masque LED 600</h3>
+                <p>Masque 600 LEDs dernière génération au collagène. Sublimez votre peau en profondeur. Nouveau !</p>
+                <div class="service-tag">À partir de 20€</div>
+            </div>
+            <div class="service-card reveal reveal-delay-4">
+                <div class="service-icon-wrap">💆</div>
+                <h3>Hammam</h3>
+                <p>Bain de vapeur pour éliminer les toxines, détendre vos muscles et purifier votre peau en douceur.</p>
+                <div class="service-tag">Inclus dans le spa</div>
+            </div>
+            <div class="service-card reveal reveal-delay-5">
+                <div class="service-icon-wrap">🧴</div>
+                <h3>Produits Bronzage</h3>
+                <p>Collections Hei Poa et TulumGold — activateurs et prolongateurs de bronzage en boutique et en ligne.</p>
+                <div class="service-tag">Boutique & en ligne</div>
+            </div>
+            <div class="service-card reveal reveal-delay-6">
+                <div class="service-icon-wrap">🎁</div>
+                <h3>Bons Cadeaux</h3>
+                <p>Offrez un moment de détente à vos proches. Bons personnalisables pour toutes les occasions.</p>
+                <div class="service-tag">Sur demande</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE MARQUEE -->
+    <section class="experience">
+        <div class="marquee-track">
+            <div class="marquee-item"><span class="marquee-text">Jacuzzi</span><span class="marquee-dot"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Hammam</span><span class="marquee-dot"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Solarium</span><span class="marquee-dot"></span></div>
+            <div class="marquee-item"><span class="marquee-text">LED Collagène</span><span class="marquee-dot"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Spa Privatif</span><span class="marquee-dot"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Détente</span><span class="marquee-dot"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Bien-être</span><span class="marquee-dot"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Bronzage</span><span class="marquee-dot"></span></div>
+            <!-- Duplicate -->
+            <div class="marquee-item"><span class="marquee-text">Jacuzzi</span><span class="marquee-dot"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Hammam</span><span class="marquee-dot"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Solarium</span><span class="marquee-dot"></span></div>
+            <div class="marquee-item"><span class="marquee-text">LED Collagène</span><span class="marquee-dot"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Spa Privatif</span><span class="marquee-dot"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Détente</span><span class="marquee-dot"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Bien-être</span><span class="marquee-dot"></span></div>
+            <div class="marquee-item"><span class="marquee-text">Bronzage</span><span class="marquee-dot"></span></div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features section-pad">
+        <div style="text-align:center;">
+            <div class="section-label reveal" style="justify-content:center;">L'expérience Sunset</div>
+            <h2 class="section-title reveal reveal-delay-1">Pourquoi nous <em>choisir</em></h2>
+        </div>
+        <div class="features-grid">
+            <div class="feat-card reveal reveal-delay-1">
+                <div class="feat-icon">🕐</div>
+                <div class="feat-name">Avec & sans RDV</div>
+                <div class="feat-sub">Flexibilité totale</div>
+            </div>
+            <div class="feat-card reveal reveal-delay-2">
+                <div class="feat-icon">🔒</div>
+                <div class="feat-name">Spa privatif</div>
+                <div class="feat-sub">1 à 4 personnes</div>
+            </div>
+            <div class="feat-card reveal reveal-delay-3">
+                <div class="feat-icon">🌿</div>
+                <div class="feat-name">110m² de bien-être</div>
+                <div class="feat-sub">Centre historique</div>
+            </div>
+            <div class="feat-card reveal reveal-delay-4">
+                <div class="feat-icon">⭐</div>
+                <div class="feat-name">Depuis 2011</div>
+                <div class="feat-sub">14 ans d'expertise</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARIFS -->
+    <section class="tarifs section-pad" id="tarifs">
+        <div class="tarifs-header">
+            <div class="section-label reveal" style="justify-content:center;">Nos tarifs</div>
+            <h2 class="section-title reveal reveal-delay-1">Des formules pour chaque <em>envie</em></h2>
+            <p class="section-desc centered reveal reveal-delay-2">Avec ou sans rendez-vous, trouvez la prestation qui vous correspond.</p>
+        </div>
+
+        <div class="tarifs-grid">
+            <div class="tarif-card reveal">
+                <h3>☀️ Solariums</h3>
+                <p class="tarif-sub">Cabines dernière génération</p>
+                <ul class="tarif-list">
+                    <li><span>Séance 10 min</span><span class="tarif-price">8€</span></li>
+                    <li><span>Séance 20 min</span><span class="tarif-price">14€</span></li>
+                    <li><span>Forfait 5 séances</span><span class="tarif-price">60€</span></li>
+                    <li><span>Forfait 10 séances</span><span class="tarif-price">110€</span></li>
+                    <li><span>Abonnement mensuel</span><span class="tarif-price">89€</span></li>
+                </ul>
+            </div>
+            <div class="tarif-card highlight reveal reveal-delay-1">
+                <div class="tarif-badge">★ Populaire</div>
+                <h3>🧖 Spa Privatif</h3>
+                <p class="tarif-sub">Jacuzzi + Hammam — 1 à 4 personnes</p>
+                <ul class="tarif-list">
+                    <li><span>1 personne — 1h</span><span class="tarif-price">35€</span></li>
+                    <li><span>2 personnes — 1h</span><span class="tarif-price">60€</span></li>
+                    <li><span>3 personnes — 1h</span><span class="tarif-price">80€</span></li>
+                    <li><span>4 personnes — 1h</span><span class="tarif-price">100€</span></li>
+                    <li><span>Supplément 30 min</span><span class="tarif-price">+15€</span></li>
+                </ul>
+            </div>
+        </div>
+        <p class="tarif-note">* Tarifs indicatifs — Contactez-nous pour les offres en cours</p>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials section-pad" id="avis">
+        <div class="testimonials-header">
+            <div class="section-label reveal" style="justify-content:center;">Avis clients</div>
+            <h2 class="section-title reveal reveal-delay-1">Ce qu'ils disent de <em>nous</em></h2>
+        </div>
+
+        <div class="test-grid">
+            <div class="test-card reveal reveal-delay-1">
+                <div class="test-quote">"</div>
+                <div class="test-stars">★★★★★</div>
+                <p>Endroit magnifique, très propre et super accueillant. Le jacuzzi et le hammam sont au top. On y retourne très vite !</p>
+                <div class="test-author">
+                    <div class="test-avatar">MD</div>
+                    <div>
+                        <div class="test-name">Marine D.</div>
+                        <div class="test-source">Google Reviews</div>
+                    </div>
+                </div>
+            </div>
+            <div class="test-card reveal reveal-delay-2">
+                <div class="test-quote">"</div>
+                <div class="test-stars">★★★★★</div>
+                <p>Les cabines de bronzage sont vraiment au top, résultat naturel. L'équipe est adorable et de bon conseil.</p>
+                <div class="test-author">
+                    <div class="test-avatar">TR</div>
+                    <div>
+                        <div class="test-name">Thomas R.</div>
+                        <div class="test-source">Google Reviews</div>
+                    </div>
+                </div>
+            </div>
+            <div class="test-card reveal reveal-delay-3">
+                <div class="test-quote">"</div>
+                <div class="test-stars">★★★★★</div>
+                <p>Spa privatif parfait en couple. Ambiance zen et chaleureuse, on se sent vraiment bien. Je recommande à 100% !</p>
+                <div class="test-author">
+                    <div class="test-avatar">SL</div>
+                    <div>
+                        <div class="test-name">Sophie L.</div>
+                        <div class="test-source">Google Reviews</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-bg"></div>
+        <div class="cta-content">
+            <h2>Prêt(e) pour un moment<br>de <em>pure détente</em> ?</h2>
+            <p>Réservez votre créneau ou passez directement — nous vous accueillons avec et sans rendez-vous au cœur de Nîmes.</p>
+            <a href="tel:0763322099" class="btn btn-white">☎ 07 63 32 20 99</a>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact section-pad" id="contact">
+        <div style="text-align:center; margin-bottom:4rem;">
+            <div class="section-label reveal" style="justify-content:center;">Contact</div>
+            <h2 class="section-title reveal reveal-delay-1">Nous <em>trouver</em></h2>
+            <p class="section-desc centered reveal reveal-delay-2">Au cœur du centre historique de Nîmes, à deux pas des Arènes.</p>
+        </div>
+
+        <div class="contact-layout">
+            <div class="reveal">
+                <div class="contact-info-list">
+                    <div class="contact-row">
+                        <div class="contact-ico">📍</div>
+                        <div>
+                            <h4>Adresse</h4>
+                            <p>3 Rue Émile Jamais<br>30900 Nîmes</p>
+                        </div>
+                    </div>
+                    <div class="contact-row">
+                        <div class="contact-ico">📞</div>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <a href="tel:0763322099">07 63 32 20 99</a>
+                        </div>
+                    </div>
+                    <div class="contact-row">
+                        <div class="contact-ico">💬</div>
+                        <div>
+                            <h4>Réservation</h4>
+                            <p>Avec & sans rendez-vous</p>
+                            <a href="https://sunsetspa.fr/reserver-en-ligne/" target="_blank" style="color:var(--gold); opacity:0.8;">Réserver en ligne →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-hours-box">
+                    <h4>☀️ Horaires d'ouverture</h4>
+                    <p>
+                        Lundi — Samedi : 10h00 – 19h00<br>
+                        Dimanche : Fermé<br>
+                        <em style="opacity:0.5; font-size:0.8rem;">Horaires susceptibles de varier</em>
+                    </p>
+                </div>
+            </div>
+            <div class="contact-map-wrap reveal reveal-delay-1">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2880.5!2d4.3575!3d43.8375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b42de2e1d5e1e1%3A0x0!2s3+Rue+%C3%89mile+Jamais%2C+30900+N%C3%AEmes!5e0!3m2!1sfr!2sfr!4v1"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="The Sunset — Plan d'accès">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">The <span>Sunset</span></div>
+            <ul class="footer-nav">
+                <li><a href="#about">Notre histoire</a></li>
+                <li><a href="#services">Prestations</a></li>
+                <li><a href="#tarifs">Tarifs</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#">Mentions légales</a></li>
+                <li><a href="#">CGU</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copy">© 2011–2026 The Sunset — Spa & Bronzage à Nîmes. Tous droits réservés.</div>
+            <div class="footer-credit">Site réalisé par <a href="https://depannagepcgard.fr" target="_blank">Dépannage PC Gard</a></div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== PRELOADER =====
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 2000);
+        });
+
+        // ===== CURSOR GLOW (desktop only) =====
+        const glow = document.getElementById('cursorGlow');
+        if (window.matchMedia('(pointer: fine)').matches) {
+            document.addEventListener('mousemove', e => {
+                glow.style.left = e.clientX + 'px';
+                glow.style.top = e.clientY + 'px';
+            });
+        } else {
+            glow.style.display = 'none';
+        }
+
+        // ===== NAVBAR =====
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('open');
+            document.getElementById('menuToggle').classList.toggle('active');
+        }
+        function closeNav() {
+            document.getElementById('navLinks').classList.remove('open');
+            document.getElementById('menuToggle').classList.remove('active');
+        }
+
+        // ===== HERO PARTICLES (Canvas) =====
+        const canvas = document.getElementById('heroCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const PARTICLE_COUNT = 50;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.speedY = -Math.random() * 0.4 - 0.1;
+                this.opacity = Math.random() * 0.4 + 0.1;
+                this.hue = Math.random() * 40 + 25; // gold range
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.opacity -= 0.001;
+                if (this.y < 0 || this.opacity <= 0) this.reset();
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `hsla(${this.hue}, 80%, 65%, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // ===== SCROLL REVEAL =====
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('vis');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>
