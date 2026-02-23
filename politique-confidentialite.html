@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de Confidentialité — The Sunset Spa Nîmes</title>
+    <meta name="description" content="Politique de confidentialité et protection des données personnelles du site The Sunset, spa et bronzage à Nîmes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep: #0c0604;
+            --dark: #1a0e06;
+            --brown: #3d1e0a;
+            --amber: #b5621a;
+            --orange: #e87a2e;
+            --gold: #f0b24a;
+            --yellow: #fcd97a;
+            --cream: #fff8f0;
+            --peach: #ffdfc4;
+            --coral: #ff6f55;
+            --rose: #ff5678;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--deep);
+            color: var(--cream);
+            -webkit-font-smoothing: antialiased;
+        }
+        .navbar {
+            position: fixed; top:0; left:0; right:0; z-index:1000;
+            padding: 1rem 4rem;
+            background: rgba(12,6,4,0.92);
+            backdrop-filter: blur(30px) saturate(1.5);
+            -webkit-backdrop-filter: blur(30px) saturate(1.5);
+            border-bottom: 1px solid rgba(240,178,74,0.06);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.6rem; font-weight:300;
+            letter-spacing: 0.18em; color: var(--gold);
+            text-decoration: none; text-transform: uppercase;
+        }
+        .nav-logo span { color: var(--orange); font-weight:600; }
+        .nav-back {
+            color: var(--peach); text-decoration: none;
+            font-size: 0.82rem; letter-spacing: 0.08em;
+            transition: color 0.3s;
+        }
+        .nav-back:hover { color: var(--gold); }
+        .page-header {
+            padding: 8rem 4rem 3rem;
+            text-align: center;
+            background: linear-gradient(180deg, var(--deep) 0%, #100906 100%);
+        }
+        .page-header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+        }
+        .page-header h1 em {
+            font-style: italic; font-weight:400;
+            background: linear-gradient(135deg, var(--gold), var(--yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .page-header p {
+            margin-top: 0.8rem;
+            color: var(--peach); opacity: 0.5;
+            font-size: 0.9rem;
+        }
+        .legal-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem 6rem;
+        }
+        .legal-content h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--gold);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(240,178,74,0.08);
+        }
+        .legal-content h2:first-child { margin-top: 0; }
+        .legal-content p {
+            font-weight: 300;
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--peach);
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+        .legal-content strong {
+            color: var(--cream);
+            font-weight: 500;
+            opacity: 1;
+        }
+        .legal-content a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        .legal-content a:hover { opacity: 0.7; }
+        .legal-content ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+        .legal-content ul li {
+            font-weight: 300;
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--peach);
+            opacity: 0.7;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        .legal-content ul li::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0.75rem;
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: var(--gold);
+            opacity: 0.4;
+        }
+        .footer {
+            background: #080402;
+            padding: 3rem 4rem;
+            border-top: 1px solid rgba(240,178,74,0.05);
+            text-align: center;
+        }
+        .footer-copy {
+            font-size: 0.72rem;
+            color: var(--peach);
+            opacity: 0.25;
+        }
+        .footer-copy a { color: var(--gold); text-decoration: none; opacity: 0.7; }
+        @media (max-width: 768px) {
+            .navbar { padding: 1rem 1.5rem; }
+            .page-header { padding: 7rem 1.5rem 2rem; }
+            .legal-content { padding: 2rem 1.5rem 4rem; }
+            .footer { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">The <span>Sunset</span></a>
+        <a href="index.html" class="nav-back">← Retour à l'accueil</a>
+    </nav>
+
+    <header class="page-header">
+        <h1>Politique de <em>Confidentialité</em></h1>
+        <p>Protection de vos données personnelles — RGPD</p>
+    </header>
+
+    <main class="legal-content">
+        <h2>1. Responsable du traitement</h2>
+        <p>
+            Le responsable du traitement des données personnelles est :<br><br>
+            <strong>The Sunset</strong><br>
+            Responsable : <strong>Thomas Rascon</strong><br>
+            Adresse : <strong>3 Rue Émile Jamais, 30900 Nîmes</strong><br>
+            Email : <strong><a href="mailto:thesunsetnimes@gmail.com">thesunsetnimes@gmail.com</a></strong><br>
+            Téléphone : <strong>07 63 32 20 99</strong><br>
+            SIRET : <strong>922 208 210 00018</strong><br>
+            N° TVA : <strong>FR51922208210</strong>
+        </p>
+
+        <h2>2. Données collectées</h2>
+        <p>
+            Dans le cadre de l'utilisation du site et de nos services, nous sommes susceptibles de collecter les données personnelles suivantes :
+        </p>
+        <ul>
+            <li><strong>Données d'identification :</strong> nom, prénom</li>
+            <li><strong>Données de contact :</strong> adresse email, numéro de téléphone</li>
+            <li><strong>Données de navigation :</strong> adresse IP, type de navigateur, pages consultées, date et heure de connexion</li>
+            <li><strong>Données de formulaire :</strong> toute information que vous nous transmettez volontairement via le formulaire de contact</li>
+        </ul>
+
+        <h2>3. Finalités du traitement</h2>
+        <p>Vos données personnelles sont collectées et traitées pour les finalités suivantes :</p>
+        <ul>
+            <li>Répondre à vos demandes de contact et d'information</li>
+            <li>Gérer les réservations et les prises de rendez-vous</li>
+            <li>Améliorer notre site web et nos services</li>
+            <li>Respecter nos obligations légales et réglementaires</li>
+            <li>Établir des statistiques de fréquentation du site</li>
+        </ul>
+
+        <h2>4. Base légale du traitement</h2>
+        <p>Le traitement de vos données personnelles repose sur les bases légales suivantes :</p>
+        <ul>
+            <li><strong>Votre consentement</strong> — pour l'envoi de messages via le formulaire de contact</li>
+            <li><strong>L'exécution d'un contrat</strong> — pour la gestion de vos réservations</li>
+            <li><strong>L'intérêt légitime</strong> — pour l'amélioration de nos services et la sécurité du site</li>
+            <li><strong>Les obligations légales</strong> — pour le respect de nos obligations comptables et fiscales</li>
+        </ul>
+
+        <h2>5. Durée de conservation</h2>
+        <p>
+            Vos données personnelles sont conservées pendant une durée proportionnée aux finalités pour lesquelles elles ont été collectées :
+        </p>
+        <ul>
+            <li><strong>Données de contact :</strong> 3 ans à compter du dernier contact</li>
+            <li><strong>Données de réservation :</strong> durée de la relation commerciale + 3 ans</li>
+            <li><strong>Données de navigation :</strong> 13 mois maximum</li>
+            <li><strong>Données comptables :</strong> 10 ans conformément aux obligations légales</li>
+        </ul>
+
+        <h2>6. Destinataires des données</h2>
+        <p>
+            Vos données personnelles sont destinées exclusivement à The Sunset et ne sont en aucun cas cédées ou vendues à des tiers. Elles peuvent toutefois être communiquées aux prestataires techniques suivants, dans le strict cadre de leurs missions :
+        </p>
+        <ul>
+            <li><strong>GitHub, Inc.</strong> — hébergement du site web</li>
+            <li><strong>Web3Forms</strong> — traitement du formulaire de contact</li>
+            <li><strong>Google</strong> — Google Fonts (typographies), Google Maps (plan d'accès)</li>
+        </ul>
+
+        <h2>7. Transferts hors UE</h2>
+        <p>
+            Certains de nos prestataires techniques (GitHub, Web3Forms, Google) sont situés aux États-Unis. Ces transferts sont encadrés par les clauses contractuelles types adoptées par la Commission européenne et/ou par le cadre de protection des données UE-États-Unis (Data Privacy Framework).
+        </p>
+
+        <h2>8. Vos droits</h2>
+        <p>
+            Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez des droits suivants :
+        </p>
+        <ul>
+            <li><strong>Droit d'accès :</strong> obtenir la confirmation que des données vous concernant sont traitées et en obtenir une copie</li>
+            <li><strong>Droit de rectification :</strong> demander la modification de vos données si elles sont inexactes ou incomplètes</li>
+            <li><strong>Droit à l'effacement :</strong> demander la suppression de vos données dans les cas prévus par la réglementation</li>
+            <li><strong>Droit à la limitation :</strong> demander la limitation du traitement de vos données</li>
+            <li><strong>Droit à la portabilité :</strong> recevoir vos données dans un format structuré et couramment utilisé</li>
+            <li><strong>Droit d'opposition :</strong> vous opposer au traitement de vos données pour des motifs légitimes</li>
+            <li><strong>Droit de retrait du consentement :</strong> retirer votre consentement à tout moment</li>
+        </ul>
+        <p>
+            Pour exercer vos droits, vous pouvez nous contacter à l'adresse suivante : <a href="mailto:thesunsetnimes@gmail.com">thesunsetnimes@gmail.com</a> ou par courrier à l'adresse : 3 Rue Émile Jamais, 30900 Nîmes.
+        </p>
+        <p>
+            Vous disposez également du droit d'introduire une réclamation auprès de la <strong>CNIL</strong> (Commission Nationale de l'Informatique et des Libertés) : <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>.
+        </p>
+
+        <h2>9. Cookies</h2>
+        <p>
+            Le site The Sunset utilise des cookies techniques strictement nécessaires au bon fonctionnement du site. Aucun cookie publicitaire ou de suivi n'est utilisé.
+        </p>
+        <p>
+            Les services tiers intégrés (Google Fonts, Google Maps) peuvent déposer des cookies soumis à leurs propres politiques de confidentialité. Vous pouvez configurer votre navigateur pour refuser les cookies.
+        </p>
+
+        <h2>10. Sécurité</h2>
+        <p>
+            The Sunset met en œuvre toutes les mesures techniques et organisationnelles appropriées pour assurer la sécurité et la confidentialité de vos données personnelles, afin de les protéger contre toute altération, destruction accidentelle, perte, traitement ou accès non autorisé.
+        </p>
+
+        <h2>11. Modification de la politique</h2>
+        <p>
+            The Sunset se réserve le droit de modifier la présente politique de confidentialité à tout moment. Toute modification sera publiée sur cette page avec la date de mise à jour.
+        </p>
+        <p>
+            <strong>Dernière mise à jour : Février 2026</strong>
+        </p>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-copy">© 2011–2026 The Sunset — Spa & Bronzage à Nîmes · Site réalisé par <a href="https://depannagepcgard.fr" target="_blank">Dépannage PC Gard</a></p>
+    </footer>
+</body>
+</html>
