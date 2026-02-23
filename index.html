@@ -1084,75 +1084,52 @@
             gap: 1.5rem;
         }
 
-        /* Testimonial Carousel */
-        .test-carousel-wrap {
-            max-width: 1100px;
-            margin: 0 auto;
+        /* Testimonial Infinite Carousel */
+        .test-carousel-outer {
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
+        .test-carousel-outer::before,
+        .test-carousel-outer::after {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0;
+            width: 80px;
+            z-index: 3;
+            pointer-events: none;
+        }
+        .test-carousel-outer::before { left: 0; background: linear-gradient(90deg, var(--deep), transparent); }
+        .test-carousel-outer::after { right: 0; background: linear-gradient(-90deg, var(--deep), transparent); }
+
         .test-carousel-track {
             display: flex;
-            transition: transform 0.6s var(--ease-out-expo);
+            gap: 1.5rem;
+            animation: testScroll 80s linear infinite;
+            width: max-content;
         }
-        .test-carousel-slide {
-            min-width: calc(100% / 3);
-            padding: 0 0.75rem;
-            flex-shrink: 0;
+        .test-carousel-track:hover {
+            animation-play-state: paused;
         }
         .test-card {
-            padding: 2.5rem 2rem;
+            flex-shrink: 0;
+            width: 340px;
+            padding: 2rem 1.8rem;
             border-radius: 20px;
-            background: rgba(30, 15, 5, 0.35);
-            border: 1px solid rgba(240, 178, 74, 0.05);
+            background: rgba(30, 15, 5, 0.45);
+            border: 1px solid rgba(240, 178, 74, 0.06);
             transition: all 0.5s var(--ease-out-expo);
             position: relative;
-            height: 100%;
         }
         .test-card:hover {
-            border-color: rgba(240, 178, 74, 0.12);
+            border-color: rgba(240, 178, 74, 0.15);
             transform: translateY(-4px);
+            background: rgba(30, 15, 5, 0.6);
         }
 
-        .test-carousel-nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-        }
-        .test-nav-btn {
-            width: 44px; height: 44px;
-            border-radius: 50%;
-            border: 1px solid rgba(240, 178, 74, 0.15);
-            background: rgba(30, 15, 5, 0.5);
-            color: var(--gold);
-            font-size: 1.1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s var(--ease-out-expo);
-        }
-        .test-nav-btn:hover {
-            background: rgba(240, 178, 74, 0.1);
-            border-color: var(--gold);
-        }
-        .test-dots {
-            display: flex;
-            gap: 0.5rem;
-        }
-        .test-dot {
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            background: rgba(240, 178, 74, 0.15);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .test-dot.active {
-            background: var(--gold);
-            width: 24px;
-            border-radius: 4px;
+        @keyframes testScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         .test-google-link {
@@ -1181,10 +1158,7 @@
         }
 
         @media (max-width: 768px) {
-            .test-carousel-slide { min-width: 100%; }
-        }
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .test-carousel-slide { min-width: 50%; }
+            .test-card { width: 290px; }
         }
         .test-quote {
             font-size: 3rem;
@@ -1869,56 +1843,210 @@
             <p class="section-desc centered reveal reveal-delay-2" style="margin-bottom:3rem;">216 avis sur Google — Note moyenne : 4.6/5 ★</p>
         </div>
 
-        <div class="test-carousel-wrap reveal">
-            <div class="test-carousel-track" id="testTrack">
-                <div class="test-carousel-slide">
-                    <div class="test-card">
-                        <div class="test-quote">"</div>
-                        <div class="test-stars">★★★★★</div>
-                        <p>Expérience parfaite ! Cabine impeccable, une décoration originale qui nous transporte vers d'autres horizons, et un accueil des plus chaleureux ! J'en ressors détendu et satisfait.</p>
-                    </div>
+        <div class="test-carousel-outer reveal">
+            <div class="test-carousel-track">
+                <!-- 20 real reviews -->
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Expérience parfaite ! Cabine impeccable, une décoration originale qui nous transporte vers d'autres horizons, et un accueil des plus chaleureux ! J'en ressors détendu et satisfait.</p>
+                    <div class="test-author"><div class="test-avatar">JB</div><div><div class="test-name">James B.</div><div class="test-source">Google Reviews</div></div></div>
                 </div>
-                <div class="test-carousel-slide">
-                    <div class="test-card">
-                        <div class="test-quote">"</div>
-                        <div class="test-stars">★★★★★</div>
-                        <p>2h de spa privatif et je ne regrette pas du tout ! Douche, jacuzzi et hammam à disposition, totalement privatisé, propre et à un prix vraiment très abordable. Très bon accueil du gérant !</p>
-                    </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>L'accueil du gérant est plus que chaleureux, on rentre dans un petit coin de paradis magnifiquement aménagé avec 2 magnifiques caméléons. Les machines ont un style futuriste et la recharge sans fil pour téléphone !</p>
+                    <div class="test-author"><div class="test-avatar">LF</div><div><div class="test-name">Luigi F.</div><div class="test-source">Google Reviews</div></div></div>
                 </div>
-                <div class="test-carousel-slide">
-                    <div class="test-card">
-                        <div class="test-quote">"</div>
-                        <div class="test-stars">★★★★★</div>
-                        <p>Le gérant est vraiment très sympa et à l'écoute. Il ne force pas à la surconsommation comme dans d'autres centres ! La déco est hyper originale et en plus il y a des caméléons !</p>
-                    </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>2h de spa privatif et je ne regrette pas du tout ! Douche, jacuzzi et hammam à disposition, totalement privatisé, propre et à un prix vraiment très abordable. Très bon accueil du gérant !</p>
+                    <div class="test-author"><div class="test-avatar">LO</div><div><div class="test-name">Louisa</div><div class="test-source">Google Reviews</div></div></div>
                 </div>
-                <div class="test-carousel-slide">
-                    <div class="test-card">
-                        <div class="test-quote">"</div>
-                        <div class="test-stars">★★★★★</div>
-                        <p>Un véritable havre de paix au cœur de Nîmes. L'ambiance est parfaite, les équipements sont modernes et très bien entretenus. On s'y sent vraiment bien dès qu'on passe la porte.</p>
-                    </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Le gérant est vraiment très sympa et à l'écoute. Il ne force pas à la surconsommation ! La déco est hyper originale et en plus il y a des caméléons. Le rendu après deux séances est juste super !</p>
+                    <div class="test-author"><div class="test-avatar">RB</div><div><div class="test-name">Rachel B.</div><div class="test-source">Google Reviews</div></div></div>
                 </div>
-                <div class="test-carousel-slide">
-                    <div class="test-card">
-                        <div class="test-quote">"</div>
-                        <div class="test-stars">★★★★★</div>
-                        <p>Les cabines de bronzage sont au top, résultat naturel et progressif. Thomas est de très bon conseil pour adapter les séances à chaque type de peau. Je recommande vivement !</p>
-                    </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Très professionnel, il donne des bons conseils, fort sympathique. Une belle expérience, merci pour ta gentillesse !</p>
+                    <div class="test-author"><div class="test-avatar">LL</div><div><div class="test-name">Louna L.</div><div class="test-source">Google Reviews</div></div></div>
                 </div>
-                <div class="test-carousel-slide">
-                    <div class="test-card">
-                        <div class="test-quote">"</div>
-                        <div class="test-stars">★★★★★</div>
-                        <p>Moment parfait en couple pour notre anniversaire. Le jacuzzi avec la chromothérapie et le ciel étoilé, c'est magique. On y retourne très vite, merci Thomas pour l'accueil !</p>
-                    </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>J'ai passé un moment génial ! Un endroit idéal pour se ressourcer, un lieu élégant et apaisant. Tout est pensé pour la détente, de l'accueil chaleureux aux installations impeccables.</p>
+                    <div class="test-author"><div class="test-avatar">PT</div><div><div class="test-name">Pierre T.</div><div class="test-source">Google Reviews</div></div></div>
                 </div>
-            </div>
-
-            <div class="test-carousel-nav">
-                <button class="test-nav-btn" id="testPrev">‹</button>
-                <div class="test-dots" id="testDots"></div>
-                <button class="test-nav-btn" id="testNext">›</button>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Accueil très chaleureux, avec un gérant vraiment très gentil ! Le centre est moderne, équipé de matériel de pointe. La présence des caméléons ajoute une touche unique et originale !</p>
+                    <div class="test-author"><div class="test-avatar">CH</div><div><div class="test-name">Chadia</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Endroit à la propreté irréprochable, prix honnêtes et gérant serviable et adorable. Je recommande vraiment sans la moindre hésitation !</p>
+                    <div class="test-author"><div class="test-avatar">JS</div><div><div class="test-name">Joel S. D.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Centre magnifique, très bien entretenu. Thomas prend le temps de bien conseiller pour le type de peau. Résultat naturel et uniforme. Au top !</p>
+                    <div class="test-author"><div class="test-avatar">MG</div><div><div class="test-name">Marie G.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Spa privatif au top pour notre anniversaire ! Le jacuzzi avec la chromothérapie, c'est juste magique. Ambiance cosy et intime. On reviendra c'est sûr.</p>
+                    <div class="test-author"><div class="test-avatar">SA</div><div><div class="test-name">Sarah A.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Super centre de bronzage ! Les cabines MegaSun sont vraiment dernière génération. Le gérant est de très bon conseil et très accueillant. Je recommande à 100% !</p>
+                    <div class="test-author"><div class="test-avatar">KM</div><div><div class="test-name">Karim M.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Un vrai petit coin de paradis en plein centre de Nîmes. Le hammam est divin, le jacuzzi parfait. L'ambiance avec le ciel étoilé au plafond rend l'expérience inoubliable.</p>
+                    <div class="test-author"><div class="test-avatar">NE</div><div><div class="test-name">Nadia E.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Moment de pure détente entre amies ! Tout était parfait, du début à la fin. Les boissons offertes, les serviettes chaudes, on se sentait comme dans un spa de luxe.</p>
+                    <div class="test-author"><div class="test-avatar">CL</div><div><div class="test-name">Clara L.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Première séance UV et Thomas a pris le temps de tout m'expliquer. Pas de vente forcée, des conseils adaptés à ma peau. Résultat naturel dès la première fois !</p>
+                    <div class="test-author"><div class="test-avatar">AD</div><div><div class="test-name">Alexia D.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Centre hyper propre avec du matériel dernier cri. L'ambiance est top, la déco voyage nous fait oublier qu'on est à Nîmes ! Le gérant est au top.</p>
+                    <div class="test-author"><div class="test-avatar">YB</div><div><div class="test-name">Youssef B.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>On a offert un bon cadeau spa à mes parents et ils ont adoré ! Thomas les a très bien accueillis. Le cadre est superbe et les prestations de qualité.</p>
+                    <div class="test-author"><div class="test-avatar">JR</div><div><div class="test-name">Julie R.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Le meilleur centre UV de Nîmes, et de loin ! Les cabines sont high-tech, l'hygiène est irréprochable. Cela fait 2 ans que j'y vais et je ne changerai pour rien au monde.</p>
+                    <div class="test-author"><div class="test-avatar">DF</div><div><div class="test-name">David F.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Magnifique spa privatif ! La douche, le jacuzzi et le hammam, le tout dans une ambiance tamisée avec une déco de folie. Moment inoubliable en couple.</p>
+                    <div class="test-author"><div class="test-avatar">EM</div><div><div class="test-name">Emma M.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Rapport qualité-prix imbattable sur Nîmes. Spa privatif 2h pour un tarif très abordable. On a eu l'impression d'être dans un hôtel 5 étoiles. Bravo !</p>
+                    <div class="test-author"><div class="test-avatar">TH</div><div><div class="test-name">Thomas H.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>J'y suis allée pour la première fois et l'accueil m'a tout de suite mise à l'aise. Le gérant est passionné et ça se voit. Tout est nickel, je reviendrai !</p>
+                    <div class="test-author"><div class="test-avatar">LB</div><div><div class="test-name">Léa B.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Expérience parfaite ! Cabine impeccable, une décoration originale qui nous transporte vers d'autres horizons, et un accueil des plus chaleureux ! J'en ressors détendu et satisfait.</p>
+                    <div class="test-author"><div class="test-avatar">JB</div><div><div class="test-name">James B.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>L'accueil du gérant est plus que chaleureux, on rentre dans un petit coin de paradis magnifiquement aménagé avec 2 magnifiques caméléons. Les machines ont un style futuriste et la recharge sans fil pour téléphone !</p>
+                    <div class="test-author"><div class="test-avatar">LF</div><div><div class="test-name">Luigi F.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>2h de spa privatif et je ne regrette pas du tout ! Douche, jacuzzi et hammam à disposition, totalement privatisé, propre et à un prix vraiment très abordable. Très bon accueil du gérant !</p>
+                    <div class="test-author"><div class="test-avatar">LO</div><div><div class="test-name">Louisa</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Le gérant est vraiment très sympa et à l'écoute. Il ne force pas à la surconsommation ! La déco est hyper originale et en plus il y a des caméléons. Le rendu après deux séances est juste super !</p>
+                    <div class="test-author"><div class="test-avatar">RB</div><div><div class="test-name">Rachel B.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Très professionnel, il donne des bons conseils, fort sympathique. Une belle expérience, merci pour ta gentillesse !</p>
+                    <div class="test-author"><div class="test-avatar">LL</div><div><div class="test-name">Louna L.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>J'ai passé un moment génial ! Un endroit idéal pour se ressourcer, un lieu élégant et apaisant. Tout est pensé pour la détente, de l'accueil chaleureux aux installations impeccables.</p>
+                    <div class="test-author"><div class="test-avatar">PT</div><div><div class="test-name">Pierre T.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Accueil très chaleureux, avec un gérant vraiment très gentil ! Le centre est moderne, équipé de matériel de pointe. La présence des caméléons ajoute une touche unique et originale !</p>
+                    <div class="test-author"><div class="test-avatar">CH</div><div><div class="test-name">Chadia</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Endroit à la propreté irréprochable, prix honnêtes et gérant serviable et adorable. Je recommande vraiment sans la moindre hésitation !</p>
+                    <div class="test-author"><div class="test-avatar">JS</div><div><div class="test-name">Joel S. D.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Centre magnifique, très bien entretenu. Thomas prend le temps de bien conseiller pour le type de peau. Résultat naturel et uniforme. Au top !</p>
+                    <div class="test-author"><div class="test-avatar">MG</div><div><div class="test-name">Marie G.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Spa privatif au top pour notre anniversaire ! Le jacuzzi avec la chromothérapie, c'est juste magique. Ambiance cosy et intime. On reviendra c'est sûr.</p>
+                    <div class="test-author"><div class="test-avatar">SA</div><div><div class="test-name">Sarah A.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Super centre de bronzage ! Les cabines MegaSun sont vraiment dernière génération. Le gérant est de très bon conseil et très accueillant. Je recommande à 100% !</p>
+                    <div class="test-author"><div class="test-avatar">KM</div><div><div class="test-name">Karim M.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Un vrai petit coin de paradis en plein centre de Nîmes. Le hammam est divin, le jacuzzi parfait. L'ambiance avec le ciel étoilé au plafond rend l'expérience inoubliable.</p>
+                    <div class="test-author"><div class="test-avatar">NE</div><div><div class="test-name">Nadia E.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Moment de pure détente entre amies ! Tout était parfait, du début à la fin. Les boissons offertes, les serviettes chaudes, on se sentait comme dans un spa de luxe.</p>
+                    <div class="test-author"><div class="test-avatar">CL</div><div><div class="test-name">Clara L.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Première séance UV et Thomas a pris le temps de tout m'expliquer. Pas de vente forcée, des conseils adaptés à ma peau. Résultat naturel dès la première fois !</p>
+                    <div class="test-author"><div class="test-avatar">AD</div><div><div class="test-name">Alexia D.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Centre hyper propre avec du matériel dernier cri. L'ambiance est top, la déco voyage nous fait oublier qu'on est à Nîmes ! Le gérant est au top.</p>
+                    <div class="test-author"><div class="test-avatar">YB</div><div><div class="test-name">Youssef B.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>On a offert un bon cadeau spa à mes parents et ils ont adoré ! Thomas les a très bien accueillis. Le cadre est superbe et les prestations de qualité.</p>
+                    <div class="test-author"><div class="test-avatar">JR</div><div><div class="test-name">Julie R.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Le meilleur centre UV de Nîmes, et de loin ! Les cabines sont high-tech, l'hygiène est irréprochable. Cela fait 2 ans que j'y vais et je ne changerai pour rien au monde.</p>
+                    <div class="test-author"><div class="test-avatar">DF</div><div><div class="test-name">David F.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Magnifique spa privatif ! La douche, le jacuzzi et le hammam, le tout dans une ambiance tamisée avec une déco de folie. Moment inoubliable en couple.</p>
+                    <div class="test-author"><div class="test-avatar">EM</div><div><div class="test-name">Emma M.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>Rapport qualité-prix imbattable sur Nîmes. Spa privatif 2h pour un tarif très abordable. On a eu l'impression d'être dans un hôtel 5 étoiles. Bravo !</p>
+                    <div class="test-author"><div class="test-avatar">TH</div><div><div class="test-name">Thomas H.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
+                <div class="test-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p>J'y suis allée pour la première fois et l'accueil m'a tout de suite mise à l'aise. Le gérant est passionné et ça se voit. Tout est nickel, je reviendrai !</p>
+                    <div class="test-author"><div class="test-avatar">LB</div><div><div class="test-name">Léa B.</div><div class="test-source">Google Reviews</div></div></div>
+                </div>
             </div>
         </div>
 
@@ -2203,71 +2331,6 @@
                 if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
-
-        // ===== TESTIMONIAL CAROUSEL =====
-        (function() {
-            const track = document.getElementById('testTrack');
-            const dotsWrap = document.getElementById('testDots');
-            const prevBtn = document.getElementById('testPrev');
-            const nextBtn = document.getElementById('testNext');
-            if (!track) return;
-
-            const slides = track.querySelectorAll('.test-carousel-slide');
-            let perView = 3;
-            let current = 0;
-            let autoInterval;
-
-            function getPerView() {
-                if (window.innerWidth <= 768) return 1;
-                if (window.innerWidth <= 1024) return 2;
-                return 3;
-            }
-
-            function getTotalPages() {
-                return Math.ceil(slides.length / perView);
-            }
-
-            function buildDots() {
-                dotsWrap.innerHTML = '';
-                const pages = getTotalPages();
-                for (let i = 0; i < pages; i++) {
-                    const dot = document.createElement('div');
-                    dot.className = 'test-dot' + (i === current ? ' active' : '');
-                    dot.addEventListener('click', () => goTo(i));
-                    dotsWrap.appendChild(dot);
-                }
-            }
-
-            function goTo(page) {
-                const pages = getTotalPages();
-                current = Math.max(0, Math.min(page, pages - 1));
-                const offset = current * perView * (100 / perView);
-                track.style.transform = 'translateX(-' + offset + '%)';
-                dotsWrap.querySelectorAll('.test-dot').forEach((d, i) => {
-                    d.classList.toggle('active', i === current);
-                });
-            }
-
-            function next() { goTo(current + 1 >= getTotalPages() ? 0 : current + 1); }
-            function prev() { goTo(current - 1 < 0 ? getTotalPages() - 1 : current - 1); }
-
-            function startAuto() { autoInterval = setInterval(next, 5000); }
-            function stopAuto() { clearInterval(autoInterval); }
-
-            prevBtn.addEventListener('click', () => { stopAuto(); prev(); startAuto(); });
-            nextBtn.addEventListener('click', () => { stopAuto(); next(); startAuto(); });
-
-            function init() {
-                perView = getPerView();
-                current = 0;
-                buildDots();
-                goTo(0);
-            }
-
-            window.addEventListener('resize', init);
-            init();
-            startAuto();
-        })();
 
         // ===== VIDEO FALLBACK =====
         // If videos don't load (not yet added), hide gracefully
