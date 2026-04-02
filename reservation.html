@@ -6,217 +6,320 @@
     <title>Réserver en ligne — The Sunset Spa & Bronzage Nîmes</title>
     <meta name="description" content="Réservez votre séance de spa privatif, solarium ou soin LED en ligne. Paiement sécurisé et confirmation instantanée.">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/logo.png">
-    
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* Styles spécifiques à la page de réservation */
+        :root {
+            --deep: #0c0604;
+            --dark: #1a0e06;
+            --brown: #3d1e0a;
+            --amber: #b5621a;
+            --orange: #e87a2e;
+            --gold: #f0b24a;
+            --yellow: #fcd97a;
+            --cream: #fff8f0;
+            --peach: #ffdfc4;
+            --coral: #ff6f55;
+            --rose: #ff5678;
+            --teal: #1b8a7a;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-smooth: cubic-bezier(0.45, 0, 0.15, 1);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body {
+            font-family: var(--font-body);
+            background: var(--deep);
+            color: var(--cream);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1.2rem 3rem;
+            background: rgba(12, 6, 4, 0.92);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(240, 178, 74, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         
-        /* Hero Section avec vidéo */
-        .reservation-hero {
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            text-decoration: none;
+        }
+        .nav-logo img { height: 40px; width: auto; }
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 300;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+        .nav-logo-text span { color: var(--orange); font-weight: 600; }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--peach);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+
+        .menu-toggle {
+            display: none;
+            width: 32px;
+            height: 22px;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        .menu-toggle span {
+            width: 100%; height: 2px;
+            background: var(--cream);
+            border-radius: 2px;
+            transition: all 0.4s;
+        }
+        .menu-toggle.active span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+        /* Mobile Nav */
+        .mobile-nav {
+            position: fixed;
+            top: 72px; left: 0; right: 0;
+            background: rgba(12, 6, 4, 0.98);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(240, 178, 74, 0.08);
+            padding: 1.5rem;
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 999;
+        }
+        .mobile-nav.active { display: flex; }
+        .mobile-nav a {
+            color: var(--peach);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(240, 178, 74, 0.05);
+        }
+
+        /* HERO */
+        .hero {
             position: relative;
-            height: 60vh;
-            min-height: 500px;
+            min-height: 65vh;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            margin-bottom: 4rem;
+            margin-top: 72px;
         }
 
-        .reservation-hero::before {
-            content: '';
+        .video-bg {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%);
-            z-index: 1;
-        }
-
-        .reservation-hero video,
-        .reservation-hero picture {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
+            inset: 0;
+            overflow: hidden;
             z-index: 0;
         }
+        .video-bg video {
+            position: absolute;
+            top: 50%; left: 50%;
+            min-width: 100%; min-height: 100%;
+            width: auto; height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+        .video-bg-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(180deg,
+                rgba(12, 6, 4, 0.65) 0%,
+                rgba(12, 6, 4, 0.5) 30%,
+                rgba(12, 6, 4, 0.6) 70%,
+                rgba(12, 6, 4, 0.85) 100%
+            );
+        }
 
-        .reservation-hero-content {
+        .hero-content {
             position: relative;
-            z-index: 2;
+            z-index: 10;
             text-align: center;
-            color: white;
-            padding: 2rem;
             max-width: 800px;
+            padding: 3rem 2rem;
         }
 
-        .reservation-hero-content p.subtitle {
-            font-size: 0.9rem;
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid rgba(252, 217, 122, 0.2);
+            border-radius: 50px;
+            font-size: 0.7rem;
+            letter-spacing: 0.22em;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-            color: rgba(255,255,255,0.8);
+            color: var(--yellow);
+            margin-bottom: 1.5rem;
+            background: rgba(240, 178, 74, 0.06);
         }
 
-        .reservation-hero-content h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            line-height: 1.2;
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--cream);
             margin-bottom: 1.5rem;
         }
-
-        .reservation-hero-content h1 em {
-            color: #dc2626;
+        .hero h1 em {
             font-style: italic;
+            font-weight: 400;
+            background: linear-gradient(135deg, var(--gold), var(--yellow), var(--orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .reservation-hero-content .description {
-            font-size: 1.1rem;
-            line-height: 1.8;
+        .hero-desc {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: var(--peach);
+            margin-bottom: 2rem;
             max-width: 600px;
-            margin: 0 auto 2rem;
-            color: rgba(255,255,255,0.9);
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
         }
 
-        .reservation-hero-content .features {
+        .hero-features {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
-            font-size: 0.95rem;
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.7);
         }
+        .hero-features span { white-space: nowrap; }
 
-        .reservation-hero-content .features span {
-            white-space: nowrap;
-        }
-
-        /* Widget Section */
+        /* WIDGET SECTION */
         .widget-section {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem 4rem;
+            padding: 4rem 2rem;
         }
 
-        .widget-container {
-            background: #0a0a0a;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
+        .widget-box {
+            background: rgba(26, 14, 6, 0.6);
+            border: 1px solid rgba(240, 178, 74, 0.08);
+            border-radius: 20px;
             padding: 3rem;
             margin-bottom: 4rem;
             min-height: 700px;
         }
 
         #planity-widget {
-            min-height: 600px;
+            min-height: 650px;
         }
 
-        /* Info Grid */
+        /* INFO GRID */
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 2rem;
             margin-bottom: 4rem;
         }
 
-        .info-item {
+        .info-card {
             text-align: center;
-            padding: 2rem 1rem;
+            padding: 2rem 1.5rem;
         }
-
-        .info-item .icon {
-            font-size: 2.5rem;
+        .info-card .icon {
+            font-size: 2.8rem;
             margin-bottom: 1rem;
-            display: block;
         }
-
-        .info-item h3 {
+        .info-card h3 {
             font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            color: var(--gold);
+            margin-bottom: 0.6rem;
             font-weight: 600;
         }
-
-        .info-item p {
-            color: #888;
-            font-size: 0.95rem;
+        .info-card p {
+            color: var(--peach);
+            opacity: 0.75;
+            font-size: 0.9rem;
             line-height: 1.6;
         }
 
-        /* CTA Section */
-        .cta-section {
+        /* CTA SECTION */
+        .cta {
             position: relative;
             height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border-radius: 20px;
             overflow: hidden;
-            border-radius: 16px;
             margin: 4rem auto;
             max-width: 1200px;
         }
 
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.7) 100%);
-            z-index: 1;
-        }
-
-        .cta-section video,
-        .cta-section picture {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            z-index: 0;
+        .cta .video-bg-overlay {
+            background: linear-gradient(135deg,
+                rgba(232, 122, 46, 0.7),
+                rgba(208, 85, 37, 0.65),
+                rgba(255, 111, 85, 0.7),
+                rgba(255, 86, 120, 0.65)
+            );
         }
 
         .cta-content {
             position: relative;
-            z-index: 2;
+            z-index: 10;
             text-align: center;
             color: white;
             padding: 2rem;
         }
 
-        .cta-content h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+        .cta h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 300;
             margin-bottom: 1rem;
         }
-
-        .cta-content h2 em {
+        .cta h2 em {
             font-style: italic;
-            color: #dc2626;
+            font-weight: 400;
         }
 
-        .cta-content p {
+        .cta p {
             font-size: 1.1rem;
             margin-bottom: 2rem;
-            color: rgba(255,255,255,0.9);
+            opacity: 0.95;
         }
 
         .cta-buttons {
@@ -226,129 +329,174 @@
             flex-wrap: wrap;
         }
 
-        .cta-primary,
-        .cta-secondary {
+        .btn {
             display: inline-block;
             padding: 1rem 2.5rem;
-            border-radius: 8px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            transition: all 0.4s var(--ease-out-expo);
         }
 
-        .cta-primary {
+        .btn-white {
             background: white;
-            color: #0a0a0a;
+            color: var(--deep);
+        }
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255,255,255,0.25);
         }
 
-        .cta-primary:hover {
-            background: #f0f0f0;
-            transform: translateY(-2px);
-        }
-
-        .cta-secondary {
-            background: transparent;
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             color: white;
-            border: 2px solid white;
+            backdrop-filter: blur(10px);
+        }
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
         }
 
-        .cta-secondary:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-2px);
+        /* FOOTER */
+        footer {
+            background: rgba(26, 14, 6, 0.5);
+            border-top: 1px solid rgba(240, 178, 74, 0.08);
+            padding: 3rem 2rem 2rem;
         }
 
-        /* Responsive */
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        .footer-logo img { height: 36px; }
+        .footer-logo span {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: var(--peach);
+            text-decoration: none;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        .footer-links a:hover { opacity: 1; }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(240, 178, 74, 0.05);
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--peach);
+            opacity: 0.6;
+        }
+        .footer-bottom a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .reservation-hero {
-                height: 50vh;
-                min-height: 400px;
-            }
-
-            .widget-container {
-                padding: 1.5rem;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .cta-section {
-                height: 300px;
-                margin: 2rem 1rem;
-            }
-
-            .cta-content h2 {
-                font-size: 1.8rem;
-            }
-
-            .widget-section {
-                padding: 0 1rem 2rem;
-            }
+            .navbar { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .menu-toggle { display: flex; }
+            
+            .hero { min-height: 55vh; margin-top: 64px; }
+            .hero-content { padding: 2rem 1.5rem; }
+            
+            .widget-box { padding: 2rem 1.5rem; }
+            .widget-section { padding: 2rem 1.5rem; }
+            
+            .info-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            
+            .cta { height: 320px; margin: 2rem 1rem; }
+            
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
         }
 
-        /* Override Planity styles */
-        .planity_ui_action_button {
-            background-color: #dc2626 !important;
-        }
-
+        /* PLANITY WIDGET OVERRIDE */
+        .planity_ui_action_button,
         .planity_ui_button {
-            background-color: #dc2626 !important;
+            background-color: var(--orange) !important;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <a href="index.html" class="logo">
-                <img src="images/logo.png" alt="The Sunset Spa Nîmes">
-                <span>The Sunset</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html#about">Notre histoire</a></li>
-                <li><a href="index.html#services">Prestations</a></li>
-                <li><a href="index.html#tarifs">Tarifs</a></li>
-                <li><a href="index.html#avis">Avis</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-            <button class="menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </nav>
-    </header>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">
+            <img src="images/logo.png" alt="The Sunset">
+            <div class="nav-logo-text">The <span>Sunset</span></div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">Notre histoire</a></li>
+            <li><a href="index.html#services">Prestations</a></li>
+            <li><a href="index.html#tarifs">Tarifs</a></li>
+            <li><a href="index.html#avis">Avis</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu">
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobileNav">
         <a href="index.html#about">Notre histoire</a>
         <a href="index.html#services">Prestations</a>
         <a href="index.html#tarifs">Tarifs</a>
         <a href="index.html#avis">Avis</a>
         <a href="index.html#contact">Contact</a>
-        <a href="reservation.html" class="cta-mobile">Réserver</a>
     </div>
 
-    <!-- Hero Section -->
-    <section class="reservation-hero">
-        <video autoplay muted loop playsinline poster="images/jacuzzi-red.webp">
-            <source src="videos/hero-spa.mp4" type="video/mp4">
-        </video>
-        <picture>
-            <source srcset="images/jacuzzi-red.webp" type="image/webp">
-            <img src="images/jacuzzi-red.webp" alt="Spa privatif The Sunset">
-        </picture>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="video-bg">
+            <video autoplay muted loop playsinline poster="images/jacuzzi-red.webp">
+                <source src="videos/hero-spa.mp4" type="video/mp4">
+            </video>
+            <div class="video-bg-overlay"></div>
+        </div>
         
-        <div class="reservation-hero-content">
-            <p class="subtitle">Réservation en ligne</p>
+        <div class="hero-content">
+            <div class="hero-badge">Réservation en ligne</div>
             <h1>Votre moment de <em>détente</em></h1>
-            <p class="description">
+            <p class="hero-desc">
                 Choisissez votre prestation, votre créneau et réservez en quelques clics. 
                 Paiement sécurisé et confirmation instantanée.
             </p>
-            <div class="features">
+            <div class="hero-features">
                 <span>🕐 Disponible 24/7</span>
                 <span>💳 Paiement sécurisé</span>
                 <span>✅ Confirmation instantanée</span>
@@ -359,53 +507,52 @@
 
     <!-- Widget Section -->
     <section class="widget-section">
-        <div class="widget-container">
+        <div class="widget-box">
             <div id="planity-widget"></div>
         </div>
 
         <!-- Info Grid -->
         <div class="info-grid">
-            <div class="info-item">
-                <span class="icon">⚡</span>
+            <div class="info-card">
+                <div class="icon">⚡</div>
                 <h3>Réservation instantanée</h3>
                 <p>Confirmation immédiate par email et SMS avec tous les détails de votre rendez-vous</p>
             </div>
-            <div class="info-item">
-                <span class="icon">🔒</span>
+            <div class="info-card">
+                <div class="icon">🔒</div>
                 <h3>Paiement sécurisé</h3>
                 <p>Paiement en ligne 100% sécurisé. Vos données bancaires sont protégées</p>
             </div>
-            <div class="info-item">
-                <span class="icon">🔄</span>
+            <div class="info-card">
+                <div class="icon">🔄</div>
                 <h3>Modification facile</h3>
                 <p>Modifiez ou annulez votre réservation depuis votre espace client personnel</p>
             </div>
-            <div class="info-item">
-                <span class="icon">📅</span>
+            <div class="info-card">
+                <div class="icon">📅</div>
                 <h3>Rappels automatiques</h3>
                 <p>Recevez des rappels par SMS et email avant votre rendez-vous</p>
             </div>
         </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <video autoplay muted loop playsinline poster="images/jacuzzi-green.webp">
-            <source src="videos/cta-relaxation.mp4" type="video/mp4">
-        </video>
-        <picture>
-            <source srcset="images/jacuzzi-green.webp" type="image/webp">
-            <img src="images/jacuzzi-green.webp" alt="Jacuzzi privatif The Sunset">
-        </picture>
-        
-        <div class="cta-content">
-            <h2>Besoin <em>d'aide</em> ?</h2>
-            <p>Notre équipe est à votre disposition pour toute question</p>
-            <div class="cta-buttons">
-                <a href="tel:0763322099" class="cta-primary">☎ 07 63 32 20 99</a>
-                <a href="index.html#contact" class="cta-secondary">Nous contacter</a>
+        <!-- CTA -->
+        <section class="cta">
+            <div class="video-bg">
+                <video autoplay muted loop playsinline poster="images/jacuzzi-green.webp">
+                    <source src="videos/cta-relaxation.mp4" type="video/mp4">
+                </video>
+                <div class="video-bg-overlay"></div>
             </div>
-        </div>
+            
+            <div class="cta-content">
+                <h2>Besoin <em>d'aide</em> ?</h2>
+                <p>Notre équipe est à votre disposition pour toute question</p>
+                <div class="cta-buttons">
+                    <a href="tel:0763322099" class="btn btn-white">☎ 07 63 32 20 99</a>
+                    <a href="index.html#contact" class="btn btn-glass">Nous contacter</a>
+                </div>
+            </div>
+        </section>
     </section>
 
     <!-- Footer -->
@@ -430,38 +577,34 @@
         </div>
     </footer>
 
-    <!-- Planity Widget Integration -->
+    <!-- Planity Widget -->
     <script>
-        // IMPORTANT: Remplacer 'VOTRE_CLE_API_PLANITY_ICI' par la vraie clé API Planity du client
-        // La clé se trouve dans: Planity Pro → Paramètres → API / Widget
-        
+        // IMPORTANT: Remplacer 'VOTRE_CLE_API_PLANITY_ICI' par la vraie clé API Planity
         var container = document.getElementById('planity-widget');
         window.planity = {
-            key: 'VOTRE_CLE_API_PLANITY_ICI', // ⚠️ À REMPLACER
-            primaryColor: '#dc2626', // Rouge The Sunset
+            key: 'VOTRE_CLE_API_PLANITY_ICI',
+            primaryColor: '#e87a2e',
             container: container,
         };
     </script>
-    
-    <!-- Planity Scripts -->
     <script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/polyfills.latest.js"></script>
     <script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/app.latest.js"></script>
 
-    <!-- Mobile Menu Script -->
+    <!-- Mobile Menu Toggle -->
     <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const mobileMenu = document.querySelector('.mobile-menu');
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
 
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
+            mobileNav.classList.toggle('active');
         });
 
-        // Close menu when clicking on a link
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
+        // Close on link click
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
+                mobileNav.classList.remove('active');
             });
         });
     </script>
