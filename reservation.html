@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réserver en ligne — The Sunset Spa & Bronzage Nîmes</title>
+    <meta name="description" content="Réservez votre séance de spa privatif, solarium ou soin LED en ligne. Paiement sécurisé et confirmation instantanée.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Styles spécifiques à la page de réservation */
+        
+        /* Hero Section avec vidéo */
+        .reservation-hero {
+            position: relative;
+            height: 60vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 4rem;
+        }
+
+        .reservation-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%);
+            z-index: 1;
+        }
+
+        .reservation-hero video,
+        .reservation-hero picture {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .reservation-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .reservation-hero-content p.subtitle {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .reservation-hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .reservation-hero-content h1 em {
+            color: #dc2626;
+            font-style: italic;
+        }
+
+        .reservation-hero-content .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .reservation-hero-content .features {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+        }
+
+        .reservation-hero-content .features span {
+            white-space: nowrap;
+        }
+
+        /* Widget Section */
+        .widget-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .widget-container {
+            background: #0a0a0a;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            min-height: 700px;
+        }
+
+        #planity-widget {
+            min-height: 600px;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .info-item {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .info-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .info-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .info-item p {
+            color: #888;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 16px;
+            margin: 4rem auto;
+            max-width: 1200px;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.7) 100%);
+            z-index: 1;
+        }
+
+        .cta-section video,
+        .cta-section picture {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .cta-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-content h2 em {
+            font-style: italic;
+            color: #dc2626;
+        }
+
+        .cta-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary,
+        .cta-secondary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-primary {
+            background: white;
+            color: #0a0a0a;
+        }
+
+        .cta-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .reservation-hero {
+                height: 50vh;
+                min-height: 400px;
+            }
+
+            .widget-container {
+                padding: 1.5rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cta-section {
+                height: 300px;
+                margin: 2rem 1rem;
+            }
+
+            .cta-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .widget-section {
+                padding: 0 1rem 2rem;
+            }
+        }
+
+        /* Override Planity styles */
+        .planity_ui_action_button {
+            background-color: #dc2626 !important;
+        }
+
+        .planity_ui_button {
+            background-color: #dc2626 !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="The Sunset Spa Nîmes">
+                <span>The Sunset</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">Notre histoire</a></li>
+                <li><a href="index.html#services">Prestations</a></li>
+                <li><a href="index.html#tarifs">Tarifs</a></li>
+                <li><a href="index.html#avis">Avis</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <a href="index.html#about">Notre histoire</a>
+        <a href="index.html#services">Prestations</a>
+        <a href="index.html#tarifs">Tarifs</a>
+        <a href="index.html#avis">Avis</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="reservation.html" class="cta-mobile">Réserver</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="reservation-hero">
+        <video autoplay muted loop playsinline poster="images/jacuzzi-red.webp">
+            <source src="videos/hero-spa.mp4" type="video/mp4">
+        </video>
+        <picture>
+            <source srcset="images/jacuzzi-red.webp" type="image/webp">
+            <img src="images/jacuzzi-red.webp" alt="Spa privatif The Sunset">
+        </picture>
+        
+        <div class="reservation-hero-content">
+            <p class="subtitle">Réservation en ligne</p>
+            <h1>Votre moment de <em>détente</em></h1>
+            <p class="description">
+                Choisissez votre prestation, votre créneau et réservez en quelques clics. 
+                Paiement sécurisé et confirmation instantanée.
+            </p>
+            <div class="features">
+                <span>🕐 Disponible 24/7</span>
+                <span>💳 Paiement sécurisé</span>
+                <span>✅ Confirmation instantanée</span>
+                <span>📱 Rappels SMS</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Widget Section -->
+    <section class="widget-section">
+        <div class="widget-container">
+            <div id="planity-widget"></div>
+        </div>
+
+        <!-- Info Grid -->
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="icon">⚡</span>
+                <h3>Réservation instantanée</h3>
+                <p>Confirmation immédiate par email et SMS avec tous les détails de votre rendez-vous</p>
+            </div>
+            <div class="info-item">
+                <span class="icon">🔒</span>
+                <h3>Paiement sécurisé</h3>
+                <p>Paiement en ligne 100% sécurisé. Vos données bancaires sont protégées</p>
+            </div>
+            <div class="info-item">
+                <span class="icon">🔄</span>
+                <h3>Modification facile</h3>
+                <p>Modifiez ou annulez votre réservation depuis votre espace client personnel</p>
+            </div>
+            <div class="info-item">
+                <span class="icon">📅</span>
+                <h3>Rappels automatiques</h3>
+                <p>Recevez des rappels par SMS et email avant votre rendez-vous</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <video autoplay muted loop playsinline poster="images/jacuzzi-green.webp">
+            <source src="videos/cta-relaxation.mp4" type="video/mp4">
+        </video>
+        <picture>
+            <source srcset="images/jacuzzi-green.webp" type="image/webp">
+            <img src="images/jacuzzi-green.webp" alt="Jacuzzi privatif The Sunset">
+        </picture>
+        
+        <div class="cta-content">
+            <h2>Besoin <em>d'aide</em> ?</h2>
+            <p>Notre équipe est à votre disposition pour toute question</p>
+            <div class="cta-buttons">
+                <a href="tel:0763322099" class="cta-primary">☎ 07 63 32 20 99</a>
+                <a href="index.html#contact" class="cta-secondary">Nous contacter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="The Sunset">
+                <span>The Sunset</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html#about">Notre histoire</a>
+                <a href="index.html#services">Prestations</a>
+                <a href="index.html#tarifs">Tarifs</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="mentions-legales.html">Mentions légales</a>
+                <a href="politique-confidentialite.html">Confidentialité</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2011–2026 The Sunset — Spa & Bronzage à Nîmes. Tous droits réservés.</p>
+            <p>Site réalisé par <a href="https://depannagepcgard.fr" target="_blank">Dépannage PC Gard</a></p>
+        </div>
+    </footer>
+
+    <!-- Planity Widget Integration -->
+    <script>
+        // IMPORTANT: Remplacer 'VOTRE_CLE_API_PLANITY_ICI' par la vraie clé API Planity du client
+        // La clé se trouve dans: Planity Pro → Paramètres → API / Widget
+        
+        var container = document.getElementById('planity-widget');
+        window.planity = {
+            key: 'VOTRE_CLE_API_PLANITY_ICI', // ⚠️ À REMPLACER
+            primaryColor: '#dc2626', // Rouge The Sunset
+            container: container,
+        };
+    </script>
+    
+    <!-- Planity Scripts -->
+    <script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/polyfills.latest.js"></script>
+    <script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/app.latest.js"></script>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
