@@ -5,6 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Sunset — Spa & Bronzage à Nîmes depuis 2011</title>
     <meta name="description" content="The Sunset, votre oasis de détente à Nîmes. Spa privatif avec Jacuzzi & Hammam, solariums dernière génération, soins LED. Depuis 2011 au cœur de Nîmes.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Open Graph / Réseaux sociaux -->
+    <meta property="og:type" content="business.business">
+    <meta property="og:title" content="The Sunset — Spa & Bronzage à Nîmes depuis 2011">
+    <meta property="og:description" content="Votre oasis de détente au cœur de Nîmes. Spa privatif Jacuzzi & Hammam, solariums dernière génération, soins LED. Réservation en ligne disponible.">
+    <meta property="og:url" content="https://thesunsetnimes.fr">
+    <meta property="og:image" content="https://thesunsetnimes.fr/images/jacuzzi-red.webp">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="The Sunset Nîmes">
+    <meta property="business:contact_data:street_address" content="3 Rue Émile Jamais">
+    <meta property="business:contact_data:locality" content="Nîmes">
+    <meta property="business:contact_data:postal_code" content="30900">
+    <meta property="business:contact_data:country_name" content="France">
+    <meta property="business:contact_data:phone_number" content="+33763322099">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Sunset — Spa & Bronzage à Nîmes">
+    <meta name="twitter:description" content="Spa privatif Jacuzzi & Hammam, solariums, soins LED. Depuis 2011 au cœur de Nîmes.">
+    <meta name="twitter:image" content="https://thesunsetnimes.fr/images/jacuzzi-red.webp">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://thesunsetnimes.fr">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
@@ -162,7 +189,7 @@
         .preloader-bar {
             width: 120px;
             height: 2px;
-            background: rgba(240, 178, 74, 0.15);
+            background: rgba(240, 192, 96, 0.15);
             border-radius: 2px;
             overflow: hidden;
         }
@@ -193,7 +220,7 @@
             background: rgba(5, 21, 30, 0.85);
             backdrop-filter: blur(30px) saturate(1.5);
             -webkit-backdrop-filter: blur(30px) saturate(1.5);
-            border-bottom: 1px solid rgba(240, 178, 74, 0.06);
+            border-bottom: 1px solid rgba(240, 192, 96, 0.06);
         }
         .nav-logo {
             display: flex;
@@ -415,7 +442,7 @@
             align-items: center;
             gap: 0.6rem;
             padding: 0.55rem 1.6rem;
-            border: 1px solid rgba(252, 217, 122, 0.2);
+            border: 1px solid rgba(240, 192, 96, 0.2);
             border-radius: 50px;
             font-size: 0.72rem;
             letter-spacing: 0.22em;
@@ -423,7 +450,7 @@
             color: var(--yellow);
             margin-bottom: 2.5rem;
             backdrop-filter: blur(12px);
-            background: rgba(240, 178, 74, 0.06);
+            background: rgba(240, 192, 96, 0.06);
             opacity: 0;
             animation: heroIn 1s var(--ease-out-expo) 2.2s forwards;
         }
@@ -534,7 +561,7 @@
             border-color: var(--gold);
             color: var(--gold);
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(240, 178, 74, 0.12);
+            box-shadow: 0 8px 30px rgba(240, 192, 96, 0.12);
         }
 
         /* Scroll indicator */
@@ -562,7 +589,7 @@
             width: 1px; height: 50px;
             position: relative;
             overflow: hidden;
-            background: rgba(240, 178, 74, 0.1);
+            background: rgba(240, 192, 96, 0.1);
         }
         .hero-scroll-line::after {
             content: '';
@@ -655,7 +682,7 @@
             position: absolute;
             inset: 0;
             border-radius: 24px;
-            border: 1px solid rgba(240, 178, 74, 0.1);
+            border: 1px solid rgba(240, 192, 96, 0.1);
             overflow: hidden;
         }
         .about-visual-frame img.about-fallback-img {
@@ -719,7 +746,7 @@
             gap: 2.5rem;
             margin-top: 2.5rem;
             padding-top: 2.5rem;
-            border-top: 1px solid rgba(240, 178, 74, 0.08);
+            border-top: 1px solid rgba(240, 192, 96, 0.08);
         }
         .stat-num {
             font-family: var(--font-display);
@@ -770,7 +797,7 @@
             background: rgba(5, 21, 30, 0.75);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(240, 178, 74, 0.06);
+            border: 1px solid rgba(240, 192, 96, 0.06);
             transition: all 0.6s var(--ease-out-expo);
             overflow: hidden;
             cursor: pointer;
@@ -841,9 +868,9 @@
             font-size: 0.72rem;
             font-weight: 500;
             letter-spacing: 0.05em;
-            background: rgba(240, 178, 74, 0.08);
+            background: rgba(240, 192, 96, 0.08);
             color: var(--gold);
-            border: 1px solid rgba(240, 178, 74, 0.1);
+            border: 1px solid rgba(240, 192, 96, 0.1);
         }
 
         /* ===== EXPERIENCE STRIP ===== */
@@ -877,7 +904,7 @@
             border-radius: 16px;
             overflow: hidden;
             position: relative;
-            border: 1px solid rgba(240, 178, 74, 0.1);
+            border: 1px solid rgba(240, 192, 96, 0.1);
         }
         .marquee-card img {
             width: 100%;
@@ -917,7 +944,7 @@
             text-align: center;
             border-radius: 20px;
             background: rgba(10, 30, 45, 0.4);
-            border: 1px solid rgba(240, 178, 74, 0.05);
+            border: 1px solid rgba(240, 192, 96, 0.05);
             transition: all 0.5s var(--ease-out-expo);
             position: relative;
             overflow: hidden;
@@ -933,7 +960,7 @@
             transition: opacity 0.5s ease;
         }
         .feat-card:hover {
-            border-color: rgba(240, 178, 74, 0.15);
+            border-color: rgba(240, 192, 96, 0.15);
             transform: translateY(-5px);
         }
         .feat-card:hover::before { opacity: 1; }
@@ -970,7 +997,7 @@
             padding: 3rem;
             border-radius: 24px;
             background: rgba(10, 30, 45, 0.4);
-            border: 1px solid rgba(240, 178, 74, 0.06);
+            border: 1px solid rgba(240, 192, 96, 0.06);
             transition: all 0.5s var(--ease-out-expo);
             position: relative;
             overflow: hidden;
@@ -1021,7 +1048,7 @@
             justify-content: space-between;
             align-items: baseline;
             padding: 0.85rem 0;
-            border-bottom: 1px solid rgba(240, 178, 74, 0.04);
+            border-bottom: 1px solid rgba(240, 192, 96, 0.04);
             font-size: 0.92rem;
             color: var(--peach);
             opacity: 0.7;
@@ -1102,12 +1129,12 @@
             padding: 2rem 1.8rem;
             border-radius: 20px;
             background: rgba(10, 30, 45, 0.45);
-            border: 1px solid rgba(240, 178, 74, 0.06);
+            border: 1px solid rgba(240, 192, 96, 0.06);
             transition: all 0.5s var(--ease-out-expo);
             position: relative;
         }
         .test-card:hover {
-            border-color: rgba(240, 178, 74, 0.15);
+            border-color: rgba(240, 192, 96, 0.15);
             transform: translateY(-4px);
             background: rgba(10, 30, 45, 0.6);
         }
@@ -1132,12 +1159,12 @@
             letter-spacing: 0.03em;
             padding: 0.8rem 2rem;
             border-radius: 50px;
-            border: 1px solid rgba(240, 178, 74, 0.2);
-            background: rgba(240, 178, 74, 0.04);
+            border: 1px solid rgba(240, 192, 96, 0.2);
+            background: rgba(240, 192, 96, 0.04);
             transition: all 0.4s var(--ease-out-expo);
         }
         .test-google-link a:hover {
-            background: rgba(240, 178, 74, 0.1);
+            background: rgba(240, 192, 96, 0.1);
             border-color: var(--gold);
             transform: translateY(-2px);
         }
@@ -1284,7 +1311,7 @@
             padding: 1.8rem;
             border-radius: 16px;
             background: rgba(10, 30, 45, 0.5);
-            border: 1px solid rgba(240, 178, 74, 0.06);
+            border: 1px solid rgba(240, 192, 96, 0.06);
         }
         .contact-hours-box h4 {
             font-family: var(--font-display);
@@ -1304,7 +1331,7 @@
             overflow: hidden;
             height: 100%;
             min-height: 400px;
-            border: 1px solid rgba(240, 178, 74, 0.08);
+            border: 1px solid rgba(240, 192, 96, 0.08);
             position: relative;
         }
         .contact-map-wrap iframe {
@@ -1353,7 +1380,7 @@
         .form-group textarea,
         .form-group select {
             background: rgba(10, 30, 45, 0.5);
-            border: 1px solid rgba(240, 178, 74, 0.08);
+            border: 1px solid rgba(240, 192, 96, 0.08);
             border-radius: 12px;
             padding: 0.9rem 1.2rem;
             font-family: var(--font-body);
@@ -1371,9 +1398,9 @@
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
-            border-color: rgba(240, 178, 74, 0.3);
+            border-color: rgba(240, 192, 96, 0.3);
             background: rgba(10, 30, 45, 0.7);
-            box-shadow: 0 0 20px rgba(240, 178, 74, 0.05);
+            box-shadow: 0 0 20px rgba(240, 192, 96, 0.05);
         }
         .form-group textarea { min-height: 140px; }
         .form-group select option {
@@ -1424,7 +1451,7 @@
         .footer {
             background: #080402;
             padding: 4rem;
-            border-top: 1px solid rgba(240, 178, 74, 0.05);
+            border-top: 1px solid rgba(240, 192, 96, 0.05);
         }
         .footer-inner {
             max-width: 1100px;
@@ -1463,7 +1490,7 @@
             max-width: 1100px;
             margin: 2rem auto 0;
             padding-top: 2rem;
-            border-top: 1px solid rgba(240, 178, 74, 0.04);
+            border-top: 1px solid rgba(240, 192, 96, 0.04);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -1488,6 +1515,33 @@
             opacity: 0.25;
         }
         .footer-credit a { color: var(--gold); text-decoration: none; opacity: 0.7; }
+
+        .footer-social {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+        .footer-social a {
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            background: rgba(43, 191, 176, 0.08);
+            border: 1px solid rgba(43, 191, 176, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: var(--peach);
+            opacity: 0.6;
+            text-decoration: none;
+        }
+        .footer-social a:hover {
+            background: rgba(43, 191, 176, 0.18);
+            border-color: var(--coral);
+            color: var(--coral);
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+        .footer-social svg { width: 16px; height: 16px; fill: currentColor; }
 
         /* ===== SCROLL ANIMATIONS ===== */
         .reveal {
@@ -2036,7 +2090,7 @@
         </div>
 
         <div class="test-google-link reveal">
-            <a href="https://www.google.com/maps/place/The+Sunset/@43.8375,4.3575,17z/" target="_blank" rel="noopener">
+            <a href="https://www.google.com/maps/place/The+Sunset/@43.835763,4.353936,17z/" target="_blank" rel="noopener">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                 Voir tous les avis Google →
             </a>
@@ -2113,7 +2167,7 @@
             </div>
             <div class="contact-map-wrap reveal reveal-delay-1">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2880.5!2d4.3575!3d43.8375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b42de2e1d5e1e1%3A0x0!2s3+Rue+%C3%89mile+Jamais%2C+30900+N%C3%AEmes!5e0!3m2!1sfr!2sfr!4v1"
+                    src="https://maps.google.com/maps?q=3+Rue+Emile+Jamais,+30900+Nimes,+France&t=&z=17&ie=UTF8&iwloc=&output=embed"
                     allowfullscreen=""
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"
@@ -2207,6 +2261,14 @@
         </div>
         <div class="footer-bottom">
             <div class="footer-copy">© 2011–2026 The Sunset — Spa & Bronzage à Nîmes. Tous droits réservés.</div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/sunset_nimes/" target="_blank" rel="noopener" aria-label="Instagram The Sunset Nîmes">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://www.facebook.com/Sunsetnimes" target="_blank" rel="noopener" aria-label="Facebook The Sunset Nîmes">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+            </div>
             <div class="footer-credit">Site réalisé par <a href="https://depannagepcgard.fr" target="_blank">Dépannage PC Gard</a></div>
         </div>
     </footer>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="32" fill="#05151E"/>
+  <!-- Teal sea layer -->
+  <circle cx="32" cy="32" r="26" fill="#0E7A7A"/>
+  <!-- Bright teal highlight -->
+  <circle cx="32" cy="32" r="20" fill="#2BBFB0"/>
+  <!-- Gold sun -->
+  <circle cx="32" cy="36" r="12" fill="#F0C060"/>
+  <!-- Horizon shimmer line -->
+  <rect x="10" y="33" width="44" height="2" rx="1" fill="#FAD870" opacity="0.6"/>
+</svg>
