@@ -2255,7 +2255,13 @@
             document.getElementById('navLinks').classList.toggle('open');
             document.getElementById('menuToggle').classList.toggle('active');
         }
-        fudocument.getElementById('heroCanvas');
+        function closeNav() {
+            document.getElementById('navLinks').classList.remove('open');
+            document.getElementById('menuToggle').classList.remove('active');
+        }
+
+        // ===== HERO CANVAS =====
+        const canvas = document.getElementById('heroCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
         const PARTICLE_COUNT = 50;
