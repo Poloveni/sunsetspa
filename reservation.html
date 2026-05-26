@@ -445,11 +445,173 @@
             .footer-links { justify-content: center; }
         }
 
-        /* PLANITY WIDGET OVERRIDE */
-        .planity_ui_action_button,
-        .planity_ui_button {
-            background-color: var(--orange) !important;
-            color: var(--deep) !important;
+        /* RESERVATION FORM */
+        .form-section {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .form-section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 300;
+            color: var(--cream);
+            text-align: center;
+            margin-bottom: 0.6rem;
+        }
+        .form-section-title em {
+            font-style: italic;
+            background: linear-gradient(135deg, var(--coral), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .form-section-sub {
+            text-align: center;
+            color: var(--peach);
+            opacity: 0.6;
+            font-size: 0.9rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .reservation-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.4rem;
+        }
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .form-field.full { grid-column: 1 / -1; }
+        .form-field label {
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--coral);
+        }
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            background: rgba(10, 48, 64, 0.5);
+            border: 1px solid rgba(43, 191, 176, 0.15);
+            border-radius: 10px;
+            padding: 0.9rem 1.1rem;
+            color: var(--cream);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 300;
+            transition: border-color 0.3s, background 0.3s;
+            outline: none;
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .form-field input::placeholder,
+        .form-field textarea::placeholder {
+            color: rgba(200, 221, 224, 0.35);
+        }
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            border-color: rgba(43, 191, 176, 0.5);
+            background: rgba(10, 48, 64, 0.7);
+        }
+        .form-field select option {
+            background: #0A3040;
+            color: var(--cream);
+        }
+        .form-field textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .form-field input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(0.7) sepia(1) saturate(2) hue-rotate(150deg);
+            cursor: pointer;
+        }
+        .select-wrapper {
+            position: relative;
+        }
+        .select-wrapper::after {
+            content: '▾';
+            position: absolute;
+            right: 1.1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--coral);
+            pointer-events: none;
+            font-size: 0.9rem;
+        }
+
+        .form-submit-row {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 1.1rem 3rem;
+            background: linear-gradient(135deg, var(--orange), var(--coral));
+            color: var(--deep);
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            transition: all 0.4s var(--ease-out-expo);
+            text-transform: uppercase;
+        }
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(43, 191, 176, 0.35);
+        }
+        .btn-submit:active { transform: translateY(-1px); }
+        .btn-submit svg { width: 18px; height: 18px; }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        .form-success.visible { display: block; }
+        .success-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .form-success h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--coral);
+            margin-bottom: 0.8rem;
+        }
+        .form-success p {
+            color: var(--peach);
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+
+        .form-note {
+            text-align: center;
+            margin-top: 1.2rem;
+            font-size: 0.82rem;
+            color: var(--peach);
+            opacity: 0.45;
+        }
+        .form-note a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            .reservation-form { grid-template-columns: 1fr; }
+            .form-field.full { grid-column: 1; }
         }
     </style>
 </head>
@@ -496,14 +658,13 @@
             <div class="hero-badge">Réservation en ligne</div>
             <h1>Votre moment de <em>détente</em></h1>
             <p class="hero-desc">
-                Choisissez votre prestation, votre créneau et réservez en quelques clics. 
-                Paiement sécurisé et confirmation instantanée.
+                Remplissez le formulaire ci-dessous et nous vous confirmons votre créneau rapidement.
+                Simple, rapide et sans engagement.
             </p>
             <div class="hero-features">
-                <span>🕐 Disponible 24/7</span>
-                <span>💳 Paiement sécurisé</span>
-                <span>✅ Confirmation instantanée</span>
-                <span>📱 Rappels SMS</span>
+                <span>🕐 Réponse sous 24h</span>
+                <span>✅ Confirmation par email</span>
+                <span>📞 Ou appelez le 07 63 32 20 99</span>
             </div>
         </div>
     </section>
@@ -511,30 +672,143 @@
     <!-- Widget Section -->
     <section class="widget-section">
         <div class="widget-box">
-            <div id="planity-widget"></div>
+            <div class="form-section">
+                <h2 class="form-section-title">Demande de <em>réservation</em></h2>
+                <p class="form-section-sub">Complétez ce formulaire et nous vous répondons dans les plus brefs délais.</p>
+
+                <form class="reservation-form" id="reservationForm">
+                    <input type="hidden" name="access_key" value="5b55275d-ca32-48c1-a0f0-d26feb64f7d9">
+                    <input type="hidden" name="subject" value="Nouvelle demande de réservation — The Sunset">
+                    <input type="hidden" name="redirect" value="">
+                    <input type="hidden" name="from_name" value="Site The Sunset — Réservation">
+
+                    <div class="form-field">
+                        <label for="res-nom">Nom & Prénom *</label>
+                        <input type="text" id="res-nom" name="nom" placeholder="Marie Dupont" required autocomplete="name">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="res-phone">Téléphone *</label>
+                        <input type="tel" id="res-phone" name="telephone" placeholder="06 12 34 56 78" required autocomplete="tel">
+                    </div>
+
+                    <div class="form-field full">
+                        <label for="res-email">Email *</label>
+                        <input type="email" id="res-email" name="email" placeholder="marie@exemple.fr" required autocomplete="email">
+                    </div>
+
+                    <div class="form-field full">
+                        <label for="res-service">Prestation souhaitée *</label>
+                        <div class="select-wrapper">
+                            <select id="res-service" name="prestation" required>
+                                <option value="" disabled selected>Choisissez une prestation…</option>
+                                <option>Spa privatif (jacuzzi)</option>
+                                <option>Solarium UV — UV Beauté</option>
+                                <option>Solarium UV — UV Bronzage</option>
+                                <option>Soin LED</option>
+                                <option>Forfait spa + soin</option>
+                                <option>Bon cadeau</option>
+                                <option>Autre / Renseignement</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="res-date">Date souhaitée</label>
+                        <input type="date" id="res-date" name="date">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="res-heure">Créneau horaire</label>
+                        <div class="select-wrapper">
+                            <select id="res-heure" name="horaire">
+                                <option value="" disabled selected>Choisissez un horaire…</option>
+                                <option>Matin (10h – 12h30)</option>
+                                <option>Après-midi (14h – 16h)</option>
+                                <option>Fin d'après-midi (16h – 19h)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="res-personnes">Nombre de personnes</label>
+                        <div class="select-wrapper">
+                            <select id="res-personnes" name="personnes">
+                                <option value="" disabled selected>Sélectionnez…</option>
+                                <option>1 personne</option>
+                                <option>2 personnes</option>
+                                <option>3 personnes</option>
+                                <option>4 personnes</option>
+                                <option>5+ personnes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="res-decouvert">Comment nous avez-vous connus ?</label>
+                        <div class="select-wrapper">
+                            <select id="res-decouvert" name="source">
+                                <option value="" disabled selected>Sélectionnez…</option>
+                                <option>Google</option>
+                                <option>Instagram</option>
+                                <option>Facebook</option>
+                                <option>Bouche à oreille</option>
+                                <option>Déjà client(e)</option>
+                                <option>Autre</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-field full">
+                        <label for="res-message">Message ou demande particulière</label>
+                        <textarea id="res-message" name="message" placeholder="Précisez vos souhaits, questions ou toute information utile…"></textarea>
+                    </div>
+
+                    <div class="form-submit-row">
+                        <button type="submit" class="btn-submit">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z"/>
+                            </svg>
+                            Envoyer ma demande
+                        </button>
+                    </div>
+                </form>
+
+                <div class="form-success" id="formSuccess">
+                    <div class="success-icon">✨</div>
+                    <h3>Demande envoyée !</h3>
+                    <p>Nous vous répondrons dans les plus brefs délais pour confirmer votre créneau.<br>
+                    Vous pouvez aussi nous joindre au <strong>07 63 32 20 99</strong>.</p>
+                </div>
+
+                <p class="form-note">
+                    Vos données sont traitées conformément à notre
+                    <a href="politique-confidentialite.html">politique de confidentialité</a>.
+                </p>
+            </div>
         </div>
 
         <!-- Info Grid -->
         <div class="info-grid">
             <div class="info-card">
                 <div class="icon">⚡</div>
-                <h3>Réservation instantanée</h3>
-                <p>Confirmation immédiate par email et SMS avec tous les détails de votre rendez-vous</p>
+                <h3>Réponse rapide</h3>
+                <p>Nous traitons chaque demande sous 24h et vous confirmons votre créneau par email ou téléphone</p>
             </div>
             <div class="info-card">
-                <div class="icon">🔒</div>
-                <h3>Paiement sécurisé</h3>
-                <p>Paiement en ligne 100% sécurisé. Vos données bancaires sont protégées</p>
+                <div class="icon">🌊</div>
+                <h3>Spa privatif</h3>
+                <p>Profitez d'un espace entièrement privatisé pour vous seul(e) ou en duo, en toute intimité</p>
             </div>
             <div class="info-card">
-                <div class="icon">🔄</div>
-                <h3>Modification facile</h3>
-                <p>Modifiez ou annulez votre réservation depuis votre espace client personnel</p>
+                <div class="icon">☀️</div>
+                <h3>Solarium & LED</h3>
+                <p>Cabines de bronzage UV et soins LED disponibles sur rendez-vous ou en accès direct</p>
             </div>
             <div class="info-card">
-                <div class="icon">📅</div>
-                <h3>Rappels automatiques</h3>
-                <p>Recevez des rappels par SMS et email avant votre rendez-vous</p>
+                <div class="icon">📞</div>
+                <h3>Préférez appeler ?</h3>
+                <p>Contactez-nous directement au <strong style="color:var(--gold)">07 63 32 20 99</strong> du lundi au vendredi, 10h–19h</p>
             </div>
         </div>
 
@@ -580,18 +854,42 @@
         </div>
     </footer>
 
-    <!-- Planity Widget -->
+    <!-- Reservation Form Handler -->
     <script>
-        // IMPORTANT: Remplacer 'VOTRE_CLE_API_PLANITY_ICI' par la vraie clé API Planity
-        var container = document.getElementById('planity-widget');
-        window.planity = {
-            key: 'VOTRE_CLE_API_PLANITY_ICI',
-            primaryColor: '#0E7A7A',
-            container: container,
-        };
+        const form = document.getElementById('reservationForm');
+        const successBox = document.getElementById('formSuccess');
+
+        // Set min date to today
+        const dateInput = document.getElementById('res-date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('.btn-submit');
+            btn.disabled = true;
+            btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Envoi en cours…';
+
+            const data = new FormData(form);
+            try {
+                const res = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: data
+                });
+                const json = await res.json();
+                if (json.success) {
+                    form.style.display = 'none';
+                    successBox.classList.add('visible');
+                } else {
+                    throw new Error('Erreur serveur');
+                }
+            } catch {
+                btn.disabled = false;
+                btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z"/></svg> Réessayer';
+                alert('Une erreur s\'est produite. Veuillez réessayer ou nous appeler au 07 63 32 20 99.');
+            }
+        });
     </script>
-    <script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/polyfills.latest.js"></script>
-    <script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/app.latest.js"></script>
 
     <!-- Mobile Menu Toggle -->
     <script>
